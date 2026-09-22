@@ -96,7 +96,7 @@ export default function Home() {
         <div className="gallery-tile tile-two"></div>
         <div className="gallery-tile tile-three"></div>
         <div className="gallery-tile tile-four"></div>
-        <a className="gallery-tile tile-five" href="#">Follow us<br /><strong>on Instagram ↗</strong></a>
+        <a className="gallery-tile tile-five" href="https://www.instagram.com/little_wonders_babysitting" target="_blank" rel="noopener noreferrer">Follow us<br /><strong>on Instagram ↗</strong></a>
       </section>
 
       {/* Connect */}

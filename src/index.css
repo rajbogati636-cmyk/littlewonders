@@ -82,7 +82,7 @@ nav a,.footer-links a{font-size:10px;text-transform:uppercase;letter-spacing:.04
 footer{background:#fff;border-top:1px solid var(--line);color:var(--blue)}
 .footer-top{padding:32px 5%;display:flex;align-items:center;justify-content:space-between;gap:30px}
 .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 16px;max-width:650px}
-.social{display:flex;gap:18px;font-size:25px;font-weight:700}
+.social{display:flex;gap:18px;align-items:center}.social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;color:#5f82a1;transition:background .2s,color .2s,transform .2s}.social a:hover{background:#eaf2f8;color:#315f89;transform:translateY(-2px)}
 .footer-bottom{border-top:1px solid var(--line);padding:16px 5%;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;text-transform:uppercase;letter-spacing:.06em;font-size:9px}
 .motto{margin-left:auto}
 

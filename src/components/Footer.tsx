@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Instagram, Facebook } from 'lucide-react';
 
 const footerLinks: { label: string; href: string }[] = [
   { label: 'Wedding Childcare', href: '/#services' },
@@ -26,9 +27,12 @@ export default function Footer() {
           ))}
         </div>
         <div className="social">
-          <a href="#">◎</a>
-          <a href="#">f</a>
-          <a href="#">p</a>
+          <a href="https://www.instagram.com/little_wonders_babysitting" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <Instagram size={20} strokeWidth={1.5} />
+          </a>
+          <a href="https://www.facebook.com/LittleWondersAustralia" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <Facebook size={20} strokeWidth={1.5} />
+          </a>
         </div>
       </div>
       <div className="footer-bottom">
