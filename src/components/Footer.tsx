@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const footerLinks: { label: string; href: string }[] = [
   { label: 'Wedding Childcare', href: '/#services' },
   { label: 'Care Options', href: '/care-options' },
-  { label: 'Private & Corporate Care', href: '/#services' },
+  { label: 'Private & Corporate Care', href: '/functions' },
   { label: 'Group Bookings', href: '/#services' },
   { label: 'Defence Care', href: '/#services' },
   { label: 'About Us', href: '/about' },

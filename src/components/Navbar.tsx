@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const navLinks: { label: string; href: string }[] = [
   { label: 'Wedding Childcare', href: '/#services' },
   { label: 'Care Options', href: '/care-options' },
-  { label: 'Private & Corporate Care', href: '/#services' },
+  { label: 'Private & Corporate Care', href: '/functions' },
   { label: 'Group Bookings', href: '/#services' },
   { label: 'Defence Care', href: '/#services' },
 ];

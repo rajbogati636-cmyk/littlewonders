@@ -57,7 +57,7 @@ export default function Home() {
               <span className="round">♧</span>
               <h3>Private &amp; Corporate Care</h3>
               <p>Conferences, corporate events, private functions and group bookings. Flexible childcare solutions designed for families, business and special occasions.</p>
-              <Link to="/contact">Learn more&nbsp; →</Link>
+              <Link to="/functions">Learn more&nbsp; →</Link>
             </div>
           </article>
           <article className="card">
