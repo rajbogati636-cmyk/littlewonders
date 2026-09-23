@@ -1,5 +1,3 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -22,11 +20,7 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const supabase = createClient(supabaseUrl, serviceRoleKey);
-
-    // Persist the registration to the database
+    // Persist the submission to the database
     let table: string;
     if (formType === "event") {
       table = "event_registrations";
@@ -41,11 +35,23 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const { error: insertError } = await supabase
-      .from(table)
-      .insert(formData);
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
-    if (insertError) {
+    const insertResponse = await fetch(`${supabaseUrl}/rest/v1/${table}`, {
+      method: "POST",
+      headers: {
+        "apikey": serviceRoleKey,
+        "Authorization": `Bearer ${serviceRoleKey}`,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!insertResponse.ok) {
+      const errText = await insertResponse.text();
+      console.error("Database insert error:", errText);
       return new Response(
         JSON.stringify({ error: "Failed to save submission" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
@@ -54,7 +60,8 @@ Deno.serve(async (req: Request) => {
 
     // Build email content
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
-    const toEmail = Deno.env.get("REGISTRATION_TO_EMAIL") || "hello@littlewonders.com.au";
+    const toEmail = Deno.env.get("ENQUIRY_TO") || Deno.env.get("REGISTRATION_TO_EMAIL") || "hello@littlewonders.com.au";
+    const fromEmail = Deno.env.get("ENQUIRY_FROM") || "Little Wonders <registrations@littlewonders.com.au>";
 
     let subject: string;
     let htmlBody: string;
@@ -79,10 +86,11 @@ Deno.serve(async (req: Request) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Little Wonders <registrations@littlewonders.com.au>",
+          from: fromEmail,
           to: [toEmail],
           subject,
           html: htmlBody,
+          reply_to: formData.email || formData.contact_email || undefined,
         }),
       });
 
@@ -90,10 +98,12 @@ Deno.serve(async (req: Request) => {
         const errText = await emailResponse.text();
         console.error("Resend API error:", errText);
       }
+    } else {
+      console.warn("RESEND_API_KEY not configured — email not sent, but submission saved to database");
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: "Registration submitted successfully" }),
+      JSON.stringify({ success: true, message: "Submission received successfully" }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (err) {
