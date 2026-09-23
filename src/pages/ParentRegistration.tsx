@@ -63,15 +63,12 @@ export default function ParentRegistration() {
     });
 
     try {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
-      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-registration`, {
+      const response = await fetch('/api/parent-registration', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${anonKey}`,
         },
-        body: JSON.stringify({ formType: 'parent', formData: data }),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) throw new Error('Request failed');
