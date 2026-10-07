@@ -1,4 +1,9 @@
+import { useEffect, useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
+
 export default function About() {
+  const rootRef = useRef<HTMLElement>(null);
+
   const aboutLinks: { num: string; title: string; desc: string; href: string }[] = [
     { num: '01', title: 'Our Story', desc: 'Get to know where Little Wonders began.', href: '/our-story' },
     { num: '02', title: 'Our Wonder Team', desc: 'Meet the people behind our care.', href: '/wonder-team' },
@@ -8,14 +13,23 @@ export default function About() {
     { num: '06', title: 'FAQ', desc: 'A few things you might be wondering.', href: '/faq' },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    rootRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main>
+    <main ref={rootRef}>
       <div className="page-hero">
         <p className="eyebrow">Little Wonders</p>
         <h1>About Us</h1>
         <p>A little more wonder in everyday.</p>
       </div>
-      <div className="about-landing">
+      <div className="about-landing reveal">
         <div className="about-feature-image"></div>
         <section className="about-intro">
           <p className="eyebrow">Care, made personal</p>

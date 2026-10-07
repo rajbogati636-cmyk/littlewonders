@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, CalendarHeart, Users } from 'lucide-react';
 
 const navLinks: { label: string; href: string }[] = [
   { label: 'Wedding Childcare', href: '/#services' },
@@ -28,28 +29,44 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   const isActive = (href: string) => location.pathname === href || location.pathname === href.replace(/\/$/, '');
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   return (
     <>
-      {/* Registration strip */}
       <div className="registration-strip">
         <div className="registration-strip-inner">
           <span className="registration-strip-label">Ready to register?</span>
           <div className="registration-strip-links">
             <Link to="/event-registration">
+              <CalendarHeart size={14} strokeWidth={1.8} />
               Event Registration <span aria-hidden="true">→</span>
             </Link>
             <Link to="/parent-registration">
+              <Users size={14} strokeWidth={1.8} />
               Parent Registration <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Announcement bar */}
       <div className="announcement">
         <span>✦</span> Premium Wedding &amp; Event Childcare Across Southern Queensland
         <div>
@@ -59,8 +76,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Header */}
-      <header className="site-header">
+      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
         <Link className="brand" to="/">
           <img className="brand-logo" src="/assets/littlewonders-logo.png" alt="Little Wonders" />
         </Link>
@@ -70,7 +86,7 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          ☰
+          {menuOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
         </button>
         <nav className={menuOpen ? 'open' : ''}>
           {navLinks.map((link) => (

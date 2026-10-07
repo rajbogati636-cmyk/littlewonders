@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Download, Sparkles, Calendar, Users, Briefcase, PartyPopper, Heart, Clock, CheckCircle2 } from 'lucide-react';
+import { Download, Sparkles, Calendar, Users, Briefcase, PartyPopper, Heart, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 const privateEventTypes = [
   'Christmas Parties',
   'Annual Celebrations',
   'Anniversaries / Engagements',
-  'Children\'s Parties',
+  "Children's Parties",
   'Birthday Parties (over 18)',
   'and much more!',
 ];
@@ -20,26 +21,10 @@ const corporateEventTypes = [
 ];
 
 const careOptions = [
-  {
-    icon: Users,
-    title: 'Supervised Care & Entertainment',
-    desc: 'Crafts, games, activities and more — keeping children happily engaged throughout your event.',
-  },
-  {
-    icon: Clock,
-    title: 'Extra Hands at Meal Times',
-    desc: 'An extra set of hands to help with feeding, settling and supporting little ones during meals.',
-  },
-  {
-    icon: Heart,
-    title: 'Slumber Spaces',
-    desc: 'Comfortable slumber spaces to accommodate your tired little guests while you celebrate.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Added Magic',
-    desc: 'Face painters, character visits, jumping castles and more — fun additions to make the day special.',
-  },
+  { icon: Users, title: 'Supervised Care & Entertainment', desc: 'Crafts, games, activities and more — keeping children happily engaged throughout your event.' },
+  { icon: Clock, title: 'Extra Hands at Meal Times', desc: 'An extra set of hands to help with feeding, settling and supporting little ones during meals.' },
+  { icon: Heart, title: 'Slumber Spaces', desc: 'Comfortable slumber spaces to accommodate your tired little guests while you celebrate.' },
+  { icon: Sparkles, title: 'Added Magic', desc: 'Face painters, character visits, jumping castles and more — fun additions to make the day special.' },
 ];
 
 const inclusions = [
@@ -63,28 +48,24 @@ const corporateBenefits = [
 ];
 
 const phases = [
-  {
-    icon: PartyPopper,
-    label: 'Private Celebrations',
-    title: 'Making Memorable Events',
-    text: 'Our process works similar to the way we cater for weddings — except more flexible, to accommodate the comfort of your own home, choice of venue or accommodation.',
-    image: '/assets/event-children.jpg',
-    types: privateEventTypes,
-  },
-  {
-    icon: Briefcase,
-    label: 'Business & Corporate',
-    title: 'Care for Meetings & Events',
-    text: 'Monthly business meetings, training events or social meets? Our Events Register and care services are perfect for you. Give your guests peace of mind with onsite, offsite or in-home care options. Bookings can be re-occurring or once-off.',
-    image: '/assets/childcare-tent.jpg',
-    types: corporateEventTypes,
-  },
+  { icon: PartyPopper, label: 'Private Celebrations', title: 'Making Memorable Events', text: 'Our process works similar to the way we cater for weddings — except more flexible, to accommodate the comfort of your own home, choice of venue or accommodation.', image: '/assets/event-children.jpg', types: privateEventTypes },
+  { icon: Briefcase, label: 'Business & Corporate', title: 'Care for Meetings & Events', text: 'Monthly business meetings, training events or social meets? Our Events Register and care services are perfect for you. Give your guests peace of mind with onsite, offsite or in-home care options. Bookings can be re-occurring or once-off.', image: '/assets/childcare-tent.jpg', types: corporateEventTypes },
 ];
 
 export default function Functions() {
+  const rootRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    rootRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main>
-      {/* Page Hero */}
+    <main ref={rootRef}>
       <div className="page-hero">
         <p className="eyebrow">Little Wonders</p>
         <h1>Private &amp; Corporate Functions</h1>
@@ -92,23 +73,14 @@ export default function Functions() {
       </div>
 
       <div className="functions-content">
-        {/* Intro Section */}
-        <section className="functions-intro">
+        <section className="functions-intro reveal">
           <div className="functions-intro-copy">
             <p className="eyebrow">Care, made personal</p>
             <h2>Flexible, beautifully considered childcare for your private and corporate events.</h2>
-            <p>
-              Whether you're hosting a birthday, anniversary, Christmas party or a corporate workshop,
-              Little Wonders brings the same warm, professional care to your event that families trust us
-              for at weddings — just more flexible, to suit the comfort of your own home, venue or accommodation.
-            </p>
-            <p>
-              Our range of services is designed to cater for any size business, from small family-owned
-              companies to large corporate organisations. Whatever the occasion, we make sure the children
-              are safe, happy and creating memories of their own — so you and your guests can relax and enjoy.
-            </p>
+            <p>Whether you're hosting a birthday, anniversary, Christmas party or a corporate workshop, Little Wonders brings the same warm, professional care to your event that families trust us for at weddings — just more flexible, to suit the comfort of your own home, venue or accommodation.</p>
+            <p>Our range of services is designed to cater for any size business, from small family-owned companies to large corporate organisations. Whatever the occasion, we make sure the children are safe, happy and creating memories of their own — so you and your guests can relax and enjoy.</p>
             <div className="functions-intro-actions">
-              <Link className="button" to="/event-registration">Register Your Event</Link>
+              <Link className="button" to="/event-registration">Register Your Event <ArrowRight size={16} strokeWidth={1.8} /></Link>
               <Link className="button outline" to="/contact">Make an Enquiry</Link>
             </div>
           </div>
@@ -117,13 +89,12 @@ export default function Functions() {
           </div>
         </section>
 
-        {/* Two Pathways */}
         {phases.map((phase, i) => (
-          <section key={phase.label} className={`functions-pathway ${i % 2 === 1 ? 'reverse' : ''}`}>
+          <section key={phase.label} className={`functions-pathway reveal ${i % 2 === 1 ? 'reverse' : ''}`}>
             <div className="functions-pathway-image">
               <img src={phase.image} alt={phase.title} />
               <div className="functions-pathway-badge">
-                <phase.icon size={22} strokeWidth={1.5} />
+                <phase.icon size={20} strokeWidth={1.5} />
                 <span>{phase.label}</span>
               </div>
             </div>
@@ -142,13 +113,12 @@ export default function Functions() {
                   ))}
                 </ul>
               </div>
-              <Link className="button small" to="/event-registration">Register Your Event &nbsp;→</Link>
+              <Link className="button small" to="/event-registration">Register Your Event &nbsp;<ArrowRight size={14} strokeWidth={1.8} /></Link>
             </div>
           </section>
         ))}
 
-        {/* Care Options */}
-        <section className="functions-care">
+        <section className="functions-care reveal">
           <p className="eyebrow centered">Care options</p>
           <h2>Thoughtful care, tailored to your event.</h2>
           <p className="functions-care-intro">From supervised entertainment to slumber spaces, we adapt our care to suit the rhythm of your celebration or business event.</p>
@@ -156,7 +126,7 @@ export default function Functions() {
             {careOptions.map((opt) => (
               <div key={opt.title} className="functions-care-card">
                 <span className="functions-care-icon">
-                  <opt.icon size={28} strokeWidth={1.5} />
+                  <opt.icon size={26} strokeWidth={1.5} />
                 </span>
                 <h3>{opt.title}</h3>
                 <p>{opt.desc}</p>
@@ -165,8 +135,7 @@ export default function Functions() {
           </div>
         </section>
 
-        {/* Inclusions */}
-        <section className="functions-inclusions">
+        <section className="functions-inclusions reveal">
           <div className="functions-inclusions-inner">
             <p className="eyebrow centered">Inclusions</p>
             <h2>What's included in our customised care packages</h2>
@@ -182,8 +151,7 @@ export default function Functions() {
           </div>
         </section>
 
-        {/* Corporate Benefits */}
-        <section className="functions-benefits">
+        <section className="functions-benefits reveal">
           <div className="functions-benefits-image">
             <img src="/assets/babysitting-family.jpg" alt="Family enjoying carefree time at a corporate event" />
           </div>
@@ -205,11 +173,10 @@ export default function Functions() {
           </div>
         </section>
 
-        {/* Functions Guide Download */}
-        <section className="functions-guide">
+        <section className="functions-guide reveal">
           <div className="functions-guide-card">
             <div className="functions-guide-icon">
-              <Download size={32} strokeWidth={1.5} />
+              <Download size={34} strokeWidth={1.5} />
             </div>
             <div className="functions-guide-copy">
               <h2>Functions Guide</h2>
@@ -222,12 +189,11 @@ export default function Functions() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="functions-cta">
+        <section className="functions-cta reveal">
           <h2>Relax &amp; Enjoy Your Event</h2>
           <p>Let us take care of the little people, so you can be fully present for what matters most.</p>
           <div className="functions-cta-actions">
-            <Link className="button" to="/event-registration">Register Your Event &nbsp;→</Link>
+            <Link className="button" to="/event-registration">Register Your Event &nbsp;<ArrowRight size={16} strokeWidth={1.8} /></Link>
             <Link className="button outline" to="/contact">Book Your Connection Call</Link>
           </div>
         </section>

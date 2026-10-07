@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 const minRequirements = [
   'Minimum 18 years of age',
@@ -27,8 +29,19 @@ const phases = [
 ];
 
 export default function WonderTeam() {
+  const rootRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    rootRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main>
+    <main ref={rootRef}>
       <div className="page-hero">
         <p className="eyebrow">Little Wonders</p>
         <h1>Our Wonder Team</h1>
@@ -36,8 +49,7 @@ export default function WonderTeam() {
       </div>
 
       <div className="wonder-team-content">
-        {/* Intro */}
-        <section className="wonder-intro">
+        <section className="wonder-intro reveal">
           <div className="wonder-intro-copy">
             <p className="eyebrow">Care, made personal</p>
             <h2>Carefully chosen. Personally selected. Here because they genuinely care.</h2>
@@ -53,23 +65,21 @@ export default function WonderTeam() {
           </div>
         </section>
 
-        {/* Team intro quote */}
-        <section className="wonder-quote">
+        <section className="wonder-quote reveal">
           <h2>Our team (or Wonder Team as we call it!) is made up of extremely amazing people…</h2>
           <p className="wonder-quote-sub">AND WE ARE ALWAYS ON THE SEARCH FOR MORE!</p>
           <p className="wonder-quote-text">We tailor each nanny and babysitting placement to each family's unique needs, ensuring we can get the best possible fit for your family.</p>
         </section>
 
-        {/* Requirements */}
         <div className="wonder-requirements-grid">
-          <section className="wonder-requirements">
+          <section className="wonder-requirements reveal">
             <h3>Team Minimum <span>Requirements</span></h3>
             <p className="wonder-requirements-label">of all positions:</p>
             <ul>
               {minRequirements.map((req) => <li key={req}>{req}</li>)}
             </ul>
           </section>
-          <section className="wonder-requirements wonder-requirements-desired">
+          <section className="wonder-requirements wonder-requirements-desired reveal reveal-delay-1">
             <h3>Desired <span>Requirements</span></h3>
             <ul>
               {desiredRequirements.map((req) => <li key={req}>{req}</li>)}
@@ -77,8 +87,7 @@ export default function WonderTeam() {
           </section>
         </div>
 
-        {/* Selection Process */}
-        <section className="wonder-selection">
+        <section className="wonder-selection reveal">
           <h2>Our Selection Process</h2>
           <p>Our selection process isn't just about qualifications, our team members go through a number of phases to become part of our team. Regardless of qualification not everyone who has the right requirements is necessarily a great fit for our team. We take the time to ensure that only the best possible are part of our team.</p>
           <div className="wonder-phases">
@@ -91,10 +100,9 @@ export default function WonderTeam() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="wonder-cta">
+        <section className="wonder-cta reveal">
           <h2>Let us help you Find Balance</h2>
-          <Link className="button" to="/contact">Contact Us Now &nbsp;→</Link>
+          <Link className="button" to="/contact">Contact Us Now &nbsp;<ArrowRight size={16} strokeWidth={1.8} /></Link>
         </section>
       </div>
     </main>

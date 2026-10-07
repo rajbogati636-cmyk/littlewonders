@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 const eventSteps = [
   'Event type', 'Your details', 'Event details', 'Childcare needs', 'Care preferences', 'Privacy & consent',
@@ -81,11 +82,14 @@ export default function EventRegistration() {
     return (
       <main>
         <div className="registration-shell" style={{ textAlign: 'center', padding: '120px 20px' }}>
-          <h1 style={{ fontSize: '48px', color: '#315f89', fontFamily: "'Cormorant Garamond',serif" }}>Thank you!</h1>
-          <p style={{ fontSize: '16px', color: '#637180', lineHeight: 1.7, maxWidth: '500px', margin: '20px auto' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', background: 'var(--pale)', marginBottom: 28, boxShadow: 'var(--shadow-md)' }}>
+            <CheckCircle2 size={40} strokeWidth={1.5} style={{ color: 'var(--sage)' }} />
+          </div>
+          <h1 style={{ fontSize: '48px', color: 'var(--blue-deep)', fontFamily: "'Cormorant Garamond',serif", fontWeight: 500 }}>Thank you!</h1>
+          <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: 1.7, maxWidth: '500px', margin: '20px auto' }}>
             We've received your event registration and our team will be in touch shortly to review the details with you.
           </p>
-          <Link className="button" to="/">Return Home</Link>
+          <Link className="button" to="/">Return Home <ArrowRight size={16} strokeWidth={1.8} /></Link>
         </div>
       </main>
     );
@@ -349,7 +353,7 @@ export default function EventRegistration() {
 
               <div className="form-actions">
                 <button className="button" type="submit" disabled={state === 'submitting'}>
-                  {state === 'submitting' ? 'Submitting...' : 'Prepare Event Registration Email'}
+                  {state === 'submitting' ? 'Submitting...' : <>Prepare Event Registration Email <ArrowRight size={16} strokeWidth={1.8} /></>}
                 </button>
                 <button className="button secondary" type="reset">Clear form</button>
               </div>
