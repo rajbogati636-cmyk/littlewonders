@@ -1,24 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Download, Sparkles, Calendar, Users, Briefcase, PartyPopper, Heart, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Download, Sparkles, Users, Briefcase, PartyPopper, Heart, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
-const privateEventTypes = [
-  'Christmas Parties',
-  'Annual Celebrations',
-  'Anniversaries / Engagements',
-  "Children's Parties",
-  'Birthday Parties (over 18)',
-  'and much more!',
-];
-
-const corporateEventTypes = [
-  'Workshops & Classes',
-  'Training Sessions',
-  'Business Functions',
-  'Christmas Parties',
-  'Monthly Meetings',
-  'Social Meets',
-];
+const privateEventTypes = ['Christmas Parties','Annual Celebrations','Anniversaries / Engagements',"Children's Parties",'Birthday Parties (over 18)','and much more!'];
+const corporateEventTypes = ['Workshops & Classes','Training Sessions','Business Functions','Christmas Parties','Monthly Meetings','Social Meets'];
 
 const careOptions = [
   { icon: Users, title: 'Supervised Care & Entertainment', desc: 'Crafts, games, activities and more — keeping children happily engaged throughout your event.' },
@@ -28,8 +13,7 @@ const careOptions = [
 ];
 
 const inclusions = [
-  '1–30+ children catered for',
-  'In-home, at your venue or accommodation',
+  '1–30+ children catered for','In-home, at your venue or accommodation',
   'Care based on your preferences — child-free moments, entire child-free events, relaxed care and more',
   'Unlimited activities planned around the interests of the children attending',
   'Comfort styling — rugs, blankets, cushions, teepees, bean bags and everything to make it feel like home',
@@ -94,8 +78,7 @@ export default function Functions() {
             <div className="functions-pathway-image">
               <img src={phase.image} alt={phase.title} />
               <div className="functions-pathway-badge">
-                <phase.icon size={20} strokeWidth={1.5} />
-                <span>{phase.label}</span>
+                <phase.icon size={20} strokeWidth={1.5} /><span>{phase.label}</span>
               </div>
             </div>
             <div className="functions-pathway-copy">
@@ -104,16 +87,11 @@ export default function Functions() {
               <p>{phase.text}</p>
               <div className="functions-pathway-types">
                 <h3>Event types we cater for</h3>
-                <ul>
-                  {phase.types.map((t) => (
-                    <li key={t}>
-                      <CheckCircle2 size={16} strokeWidth={1.8} className="functions-check" />
-                      <span>{t}</span>
-                    </li>
-                  ))}
-                </ul>
+                <ul>{phase.types.map((t) => (
+                  <li key={t}><CheckCircle2 size={16} strokeWidth={1.8} className="functions-check" /><span>{t}</span></li>
+                ))}</ul>
               </div>
-              <Link className="button small" to="/event-registration">Register Your Event &nbsp;<ArrowRight size={14} strokeWidth={1.8} /></Link>
+              <Link className="button small" to="/event-registration">Register Your Event <ArrowRight size={14} strokeWidth={1.8} /></Link>
             </div>
           </section>
         ))}
@@ -125,9 +103,7 @@ export default function Functions() {
           <div className="functions-care-grid">
             {careOptions.map((opt) => (
               <div key={opt.title} className="functions-care-card">
-                <span className="functions-care-icon">
-                  <opt.icon size={26} strokeWidth={1.5} />
-                </span>
+                <span className="functions-care-icon"><opt.icon size={26} strokeWidth={1.5} /></span>
                 <h3>{opt.title}</h3>
                 <p>{opt.desc}</p>
               </div>
@@ -143,8 +119,7 @@ export default function Functions() {
             <div className="functions-inclusions-list">
               {inclusions.map((inc) => (
                 <div key={inc} className="functions-inclusion-item">
-                  <CheckCircle2 size={18} strokeWidth={1.8} />
-                  <span>{inc}</span>
+                  <CheckCircle2 size={18} strokeWidth={1.8} /><span>{inc}</span>
                 </div>
               ))}
             </div>
@@ -158,14 +133,9 @@ export default function Functions() {
           <div className="functions-benefits-copy">
             <p className="eyebrow">Business &amp; corporate benefits</p>
             <h2>Why hire an onsite nanny for your meeting, workshop or function?</h2>
-            <ul>
-              {corporateBenefits.map((b) => (
-                <li key={b}>
-                  <CheckCircle2 size={18} strokeWidth={1.8} className="functions-check" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
+            <ul>{corporateBenefits.map((b) => (
+              <li key={b}><CheckCircle2 size={18} strokeWidth={1.8} className="functions-check" /><span>{b}</span></li>
+            ))}</ul>
             <div className="functions-benefits-cta">
               <Link className="button" to="/event-registration">Register Your Event</Link>
               <Link className="button outline" to="/contact">Ask a Question</Link>
@@ -175,15 +145,12 @@ export default function Functions() {
 
         <section className="functions-guide reveal">
           <div className="functions-guide-card">
-            <div className="functions-guide-icon">
-              <Download size={34} strokeWidth={1.5} />
-            </div>
+            <div className="functions-guide-icon"><Download size={34} strokeWidth={1.5} /></div>
             <div className="functions-guide-copy">
               <h2>Functions Guide</h2>
               <p>Download our Functions Guide for a full overview of our private and corporate care packages, inclusions and options. This document is updated periodically — the current version is available now and will be refreshed later in the year.</p>
               <a className="button" href="/assets/little-wonders-functions-guide.pdf" download>
-                <Download size={16} strokeWidth={1.8} />
-                Download Functions Guide
+                <Download size={16} strokeWidth={1.8} /> Download Functions Guide
               </a>
             </div>
           </div>
@@ -193,7 +160,7 @@ export default function Functions() {
           <h2>Relax &amp; Enjoy Your Event</h2>
           <p>Let us take care of the little people, so you can be fully present for what matters most.</p>
           <div className="functions-cta-actions">
-            <Link className="button" to="/event-registration">Register Your Event &nbsp;<ArrowRight size={16} strokeWidth={1.8} /></Link>
+            <Link className="button" to="/event-registration">Register Your Event <ArrowRight size={16} strokeWidth={1.8} /></Link>
             <Link className="button outline" to="/contact">Book Your Connection Call</Link>
           </div>
         </section>

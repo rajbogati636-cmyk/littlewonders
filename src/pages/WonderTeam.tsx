@@ -75,15 +75,11 @@ export default function WonderTeam() {
           <section className="wonder-requirements reveal">
             <h3>Team Minimum <span>Requirements</span></h3>
             <p className="wonder-requirements-label">of all positions:</p>
-            <ul>
-              {minRequirements.map((req) => <li key={req}>{req}</li>)}
-            </ul>
+            <ul>{minRequirements.map((req) => <li key={req}>{req}</li>)}</ul>
           </section>
-          <section className="wonder-requirements wonder-requirements-desired reveal reveal-delay-1">
+          <section className="wonder-requirements wonder-requirements-desired reveal reveal-d1">
             <h3>Desired <span>Requirements</span></h3>
-            <ul>
-              {desiredRequirements.map((req) => <li key={req}>{req}</li>)}
-            </ul>
+            <ul>{desiredRequirements.map((req) => <li key={req}>{req}</li>)}</ul>
           </section>
         </div>
 
@@ -102,7 +98,7 @@ export default function WonderTeam() {
 
         <section className="wonder-cta reveal">
           <h2>Let us help you Find Balance</h2>
-          <Link className="button" to="/contact">Contact Us Now &nbsp;<ArrowRight size={16} strokeWidth={1.8} /></Link>
+          <Link className="button" to="/contact">Contact Us Now <ArrowRight size={16} strokeWidth={1.8} /></Link>
         </section>
       </div>
     </main>

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
 
 export default function About() {
   const rootRef = useRef<HTMLElement>(null);

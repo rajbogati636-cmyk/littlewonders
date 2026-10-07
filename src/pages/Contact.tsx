@@ -34,11 +34,9 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-
       if (!response.ok) throw new Error('Request failed');
       const result = await response.json();
       if (result.error) throw new Error(result.error);
-
       setState('success');
       form.reset();
     } catch {
@@ -51,16 +49,14 @@ export default function Contact() {
     return (
       <main>
         <div className="registration-shell" style={{ textAlign: 'center', padding: '120px 20px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', background: 'var(--pale)', marginBottom: 28, boxShadow: 'var(--shadow-md)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', background: 'var(--sky-pale)', marginBottom: 28, boxShadow: 'var(--shadow-md)' }}>
             <CheckCircle2 size={40} strokeWidth={1.5} style={{ color: 'var(--sage)' }} />
           </div>
-          <h1 style={{ fontSize: '48px', color: 'var(--blue-deep)', fontFamily: "'Cormorant Garamond',serif", fontWeight: 500 }}>Thank you!</h1>
+          <h1 style={{ fontSize: '48px', color: 'var(--ocean)', fontFamily: 'var(--serif)', fontWeight: 500 }}>Thank you!</h1>
           <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: 1.7, maxWidth: '500px', margin: '20px auto' }}>
             Your message has been sent. Our team will be in touch with you shortly.
           </p>
-          <Link className="button" to="/">
-            Return Home <ArrowRight size={16} strokeWidth={1.8} />
-          </Link>
+          <Link className="button" to="/">Return Home <ArrowRight size={16} strokeWidth={1.8} /></Link>
         </div>
       </main>
     );
@@ -81,15 +77,15 @@ export default function Contact() {
               Send us a quick message and we'll get back to you as soon as we can. For detailed enquiries, please use the event or parent registration forms.
             </p>
             <p className="registration-aside-note" style={{ borderTop: 0, paddingTop: 0, marginTop: 12 }}>
-              Or call us directly on <strong style={{ color: 'var(--blue)' }}>0488 233 252</strong>.
+              Or call us directly on <strong style={{ color: 'var(--ocean)' }}>0488 233 252</strong>.
             </p>
-            <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--pale-deep)', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <a href="tel:0488233252" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--blue)', fontWeight: 500, transition: 'gap 0.2s' }}
+            <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--sky)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <a href="tel:0488233252" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--ocean)', fontWeight: 500, transition: 'gap 0.2s' }}
                 onMouseEnter={(e) => (e.currentTarget.style.gap = '14px')}
                 onMouseLeave={(e) => (e.currentTarget.style.gap = '10px')}>
                 <Phone size={16} strokeWidth={1.5} /> 0488 233 252
               </a>
-              <a href="mailto:hello@littlewonders.com.au" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--blue)', fontWeight: 500, transition: 'gap 0.2s' }}
+              <a href="mailto:hello@littlewonders.com.au" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--ocean)', fontWeight: 500, transition: 'gap 0.2s' }}
                 onMouseEnter={(e) => (e.currentTarget.style.gap = '14px')}
                 onMouseLeave={(e) => (e.currentTarget.style.gap = '10px')}>
                 <Mail size={16} strokeWidth={1.5} /> hello@littlewonders.com.au
@@ -99,7 +95,6 @@ export default function Contact() {
           <form onSubmit={handleSubmit} autoComplete="on">
             <div className="registration-form-card">
               <p className="required-note"><span>*</span> Required fields.</p>
-
               <fieldset className="form-section" data-section="Contact" style={{ paddingBottom: 0 }}>
                 <legend>Send us a message<small>We'll reply to your email as soon as we can.</small></legend>
                 <div className="form-grid">
@@ -117,15 +112,12 @@ export default function Contact() {
                   </div>
                 </div>
               </fieldset>
-
               {state === 'error' && (
                 <div className="form-status is-visible is-error" style={{ marginTop: 18 }}>{errorMsg}</div>
               )}
-
               <div className="form-actions">
                 <button className="button" type="submit" disabled={state === 'submitting'}>
-                  {state === 'submitting' ? 'Sending...' : 'Send Message'}
-                  {state !== 'submitting' && <Send size={15} strokeWidth={1.8} />}
+                  {state === 'submitting' ? 'Sending...' : <>Send Message <Send size={15} strokeWidth={1.8} /></>}
                 </button>
                 <button className="button secondary" type="reset">Clear</button>
               </div>
