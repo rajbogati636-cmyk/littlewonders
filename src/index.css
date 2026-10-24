@@ -1053,3 +1053,180 @@ main { }
   .registration-strip-links a { font-size: 8px; padding: 6px 10px; }
   .registration-strip-links span { display: none; }
 }
+
+
+/* =============================================================
+   LITTLE WONDERS — PASTEL POLISH / ROUND 2 (October 2026)
+   Gentle brand accents with readable type, clearer calls to action,
+   keyboard states and practical mobile improvements. This stylesheet
+   remains the only visual source of truth; no forms or APIs changed.
+   ============================================================= */
+:root {
+  --rose-deep: #B16F80; /* DEEPS rose from the client's card, for display accents */
+}
+
+/* Text on pale brand surfaces needs more contrast than decorative script. */
+nav a, .footer-links a { color: var(--ink); font-size: 11.5px; line-height: 1.45; }
+nav a:not(.dropdown-menu a):hover { color: var(--ink); }
+.dropdown-menu a { font-size: 12px !important; line-height: 1.5; }
+.dropdown-menu a:hover { color: var(--ink); }
+.announcement { font-size: 11px; letter-spacing: .09em; }
+.registration-strip-label { font-size: 10px; }
+.registration-strip-links a { font-size: 10px; min-height: 35px; }
+.eyebrow { font-size: 12px; line-height: 1.5; color: var(--ink); }
+.hero-kicker { font-size: 11px; line-height: 1.5; }
+.hero-full h1 { line-height: 1.04; }
+.hero-full h1 em { color: var(--rose-deep); }
+.hero-script { color: var(--ocean); line-height: 1.08; }
+.hero-note { font-size: 12px; }
+.alt-copy h2, .connect h2 { line-height: 1.12; }
+.alt-copy.dark h2, .alt-copy.dark .eyebrow { color: var(--ink); }
+.alt-copy.dark .alt-features li svg { color: var(--ink); }
+.venues-band h2, .venues-band-content p, .regions a { color: var(--ink); }
+.regions a { font-size: 11.5px; line-height: 1.5; }
+.page-hero h1, .registration-hero h1 { color: var(--ink); }
+.registration-hero h1 em { color: var(--ink-soft); }
+.side-nav a { color: var(--ink); font-size: 12px; }
+.about-links strong { color: var(--ink); }
+
+/* A coherent button family, readable in default / hover / keyboard states. */
+.button {
+  min-height: 44px;
+  padding: 14px 25px;
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: .055em;
+  justify-content: center;
+  text-align: center;
+  background: var(--rose-soft);
+  color: var(--ink);
+  border: 1px solid rgba(67,81,90,.10);
+  box-shadow: 0 6px 18px rgba(67,81,90,.11);
+}
+.button::before { display: none; }
+.button:hover {
+  background: var(--rose-pale);
+  color: var(--ink);
+  border-color: rgba(67,81,90,.16);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(67,81,90,.14);
+}
+.button:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+.button.small { min-height: 42px; padding: 12px 17px; }
+.button.outline { background: #fff; color: var(--ink); border-color: var(--ink-soft); }
+.button.outline:hover { background: var(--sky-pale); color: var(--ink); border-color: var(--ink); }
+.button.secondary { background: var(--sky); color: var(--ink); }
+.button.secondary:hover { background: var(--sky-pale); color: var(--ink); opacity: 1; }
+.button.light { background: #fff; color: var(--ink); }
+.button.light:hover { background: var(--cream); color: var(--ink); }
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Pastel areas retain warmth while using dark text for essential copy. */
+.features { padding: 30px 3%; }
+.features svg { display: block; margin: 0 auto 10px; color: var(--ink); }
+.features b { font-size: 11.5px; line-height: 1.35; }
+.features p { font-size: 12.5px; line-height: 1.55; color: var(--ink); }
+.alt-image-badge { font-size: 11px; }
+.alt-image-badge, .hero-kicker { color: var(--ink); }
+.alt-copy.dark { background: var(--sage-soft); }
+.connect {
+  background: linear-gradient(135deg, #fff8fa 0%, var(--cream-warm) 58%, #fff4f7 100%);
+  padding: 86px 20px;
+}
+.connect > p:not(.eyebrow) { font-size: 15px; color: var(--ink); }
+.footer-brand p, .footer-top p { color: var(--ink); }
+.footer-links a { font-size: 12px; }
+.footer-bottom { font-size: 10.5px; line-height: 1.6; color: var(--ink); }
+.footer-social-links a { min-width: 44px; min-height: 44px; }
+.prose h3 { color: var(--ink); }
+.prose p:first-child { color: var(--ink); }
+.registration-aside h3, .form-section legend { color: var(--ink); }
+.field label, .field-label { font-size: 12px; }
+.field input, .field select, .field textarea { font-size: 15px; min-height: 44px; }
+.choice { font-size: 13px; line-height: 1.5; }
+.privacy-note, .form-note, .required-note { font-size: 12px; }
+
+/* Make mobile navigation a usable scrollable panel, with working submenus. */
+@media (max-width: 760px) {
+  .site-header { justify-content: space-between; }
+  .site-header .menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 12px;
+    background: var(--sky-pale);
+  }
+  .site-header nav {
+    max-height: calc(100dvh - 145px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    gap: 3px;
+    padding: 14px 20px 24px;
+    border-top: 1px solid var(--line);
+  }
+  .site-header nav > a, .site-header .nav-dropdown > a {
+    display: block;
+    padding: 12px 8px;
+    min-height: 44px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .site-header .nav-dropdown { display: block; margin: 0; padding: 0; }
+  .site-header .nav-dropdown::after { display: none; }
+  .site-header .nav-dropdown:not(.open) .dropdown-menu { display: none; }
+  .site-header .nav-dropdown.open > .dropdown-menu {
+    display: block;
+    position: static;
+    box-shadow: none;
+    background: var(--sky-pale);
+    border: 0;
+    border-left: 3px solid var(--rose-soft);
+    border-radius: 0 10px 10px 0;
+    margin: 0 0 8px 8px;
+    padding: 4px 0;
+    min-width: 0;
+  }
+  .site-header .dropdown-menu a { white-space: normal; font-size: 12px !important; padding: 11px 16px !important; }
+  .announcement { font-size: 10px; line-height: 1.4; text-align: center; }
+  .features { gap: 0; padding: 14px 8px; }
+  .features div { padding: 18px 10px; }
+  .features div:nth-child(2n) { border-right: 0; }
+  .hero-full-content { padding: 48px 7% 56px; }
+  .hero-full h1 { font-size: clamp(42px, 10vw, 60px); }
+  .hero-script { font-size: clamp(31px, 7.8vw, 44px); }
+  .alt-copy { padding: 48px 7%; }
+  .connect { padding: 70px 22px; }
+  .connect h2 { font-size: clamp(32px, 8vw, 43px); }
+  .footer-top { padding: 44px 7% 32px; }
+}
+@media (max-width: 620px) {
+  .registration-strip-inner { gap: 6px; }
+  .registration-strip-label { font-size: 10px; }
+  .registration-strip-links { flex-wrap: wrap; justify-content: center; }
+  .registration-strip-links a { font-size: 10px; padding: 7px 10px; min-height: 40px; }
+  .hero-full-image { min-height: 290px; }
+  .hero-full-content > p:not(.eyebrow):not(.hero-note) { font-size: 15px; line-height: 1.65; }
+  .hero-full .actions { align-items: stretch; }
+  .hero-full .actions .button { flex: 1 1 220px; }
+  .features p { font-size: 12px; }
+  .bento-gallery { gap: 9px; padding: 9px; }
+  .alt-copy > p { font-size: 15px; }
+  .alt-features li { font-size: 14px; }
+  .registration-hero { padding: 48px 0 44px; }
+  .registration-hero h1 { font-size: clamp(42px, 10vw, 58px); }
+  .registration-intro { padding-top: 32px; }
+}
+
+/* Respect visitors who prefer fewer animations. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-full-content::before, .page-hero::before, .hero-stamp { animation: none; }
+  .button, .alt-image img, .alt-image-bg, .bento-tile, .features div { transition: none; }
+}
