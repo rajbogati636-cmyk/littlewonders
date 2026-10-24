@@ -1540,3 +1540,148 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
   .registration-strip-links { flex-wrap: wrap; justify-content: center; }
   .registration-strip-links a { font-size: 10px; }
 }
+
+
+/* ============================================================
+   OCT 2026 — Header navigation stability correction
+   The registration and announcement bars remain present at the
+   top of the page, but scroll out naturally. Only the navigation
+   sticks; it does not change height or overlap the bars.
+   ============================================================ */
+.registration-strip {
+  position: relative;
+  top: auto;
+  z-index: 55;
+}
+.announcement { z-index: 54; }
+.site-header,
+.site-header.is-scrolled {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px clamp(20px, 3%, 55px);
+  gap: clamp(12px, 1.2vw, 22px);
+  animation: none;
+  transform: none;
+  box-shadow: 0 2px 14px rgba(28,42,50,.08);
+}
+.site-header .brand { flex: 0 0 auto; }
+.site-header .brand-logo {
+  width: clamp(170px, 12.3vw, 200px);
+  height: 74px;
+}
+.site-header .brand::after { font-size: 17px; }
+.site-header nav {
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(7px, .85vw, 14px);
+}
+.site-header nav > a,
+.site-header .nav-dropdown > a {
+  font-size: clamp(10px, .76vw, 12px);
+  white-space: nowrap;
+  letter-spacing: .02em;
+}
+.site-header > .button.small {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 12px 16px;
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.site-header .mobile-booking-link { display: none; }
+
+/* On tablets/narrower desktop windows use the full menu instead
+   of clipping the first links or wrapping navigation awkwardly. */
+@media (max-width: 1420px) {
+  .site-header, .site-header.is-scrolled {
+    justify-content: space-between;
+    padding: 12px clamp(20px, 4%, 55px);
+    gap: 16px;
+  }
+  .site-header .brand-logo { width: 185px; height: 69px; }
+  .site-header .brand::after { font-size: 16px; }
+  .site-header > .button.small { display: none; }
+  .site-header .menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 46px;
+    margin-left: auto;
+    min-height: 46px;
+    border-radius: 12px;
+    background: var(--sky-pale);
+  }
+  .site-header nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    padding: 15px clamp(20px, 4%, 55px) 24px;
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .site-header nav.open { display: flex; }
+  .site-header nav > a,
+  .site-header .nav-dropdown > a {
+    display: block;
+    padding: 13px 12px;
+    min-height: 44px;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+  .site-header .nav-dropdown { display: block; margin: 0; padding: 0; }
+  .site-header .nav-dropdown::after { display: none; }
+  .site-header .nav-dropdown .dropdown-menu { display: none; }
+  .site-header .nav-dropdown.open .dropdown-menu {
+    display: block;
+    position: static;
+    min-width: 0;
+    margin: 0 0 8px 12px;
+    padding: 4px 0;
+    box-shadow: none;
+    border: 0;
+    border-left: 3px solid var(--rose-soft);
+    border-radius: 0 10px 10px 0;
+    background: var(--sky-pale);
+  }
+  .site-header .dropdown-menu a {
+    white-space: normal !important;
+    font-size: 12px !important;
+    padding: 12px 16px !important;
+  }
+  .site-header .mobile-booking-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    background: var(--rose-soft);
+    color: var(--ink);
+    margin: 12px 0 0;
+    text-align: center;
+    font-weight: 700;
+  }
+  .site-header .mobile-booking-link::after { display: none; }
+}
+@media (max-width: 760px) {
+  .site-header, .site-header.is-scrolled { padding: 9px 20px; }
+  .site-header .brand-logo { width: 160px; height: 59px; }
+  .site-header .brand::after { font-size: 14px; }
+  .site-header nav { max-height: calc(100dvh - 88px); }
+}
