@@ -3,40 +3,40 @@
    Full-bleed sections · alternating rows · bento gallery
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Questrial&display=swap');
 
 :root {
-  --ink: #1c2a32;
-  --ink-soft: #5a6e7a;
-  --ink-light: #8da0ac;
-  --ocean: #1a3a52;
-  --ocean-mid: #2c5a7c;
-  --ocean-soft: #4a7a9e;
-  --sky: #d0e4f0;
-  --sky-pale: #e8f2f8;
-  --cream: #faf6f1;
-  --cream-warm: #f3ebe1;
-  --cream-deep: #e8ddcd;
-  --rose: #c98a8c;
-  --rose-soft: #e8c4c6;
-  --rose-pale: #f5e0e2;
-  --gold: #b89b5e;
-  --gold-soft: #ddd0a8;
-  --sage: #7a9b7e;
-  --sage-soft: #c5d8c8;
+  --ink: #43515a;
+  --ink-soft: #687780;
+  --ink-light: #9aabb2;
+  --ocean: #6f8fa8;
+  --ocean-mid: #89a8c2;
+  --ocean-soft: #9eb7c9;
+  --sky: #c9ddf2;
+  --sky-pale: #eaf4fb;
+  --cream: #fffaf7;
+  --cream-warm: #fff2ee;
+  --cream-deep: #f4dfd9;
+  --rose: #d1849e;
+  --rose-soft: #efbdc9;
+  --rose-pale: #f8e4e9;
+  --gold: #e1b94f;
+  --gold-soft: #ffe5a6;
+  --sage: #82bfae;
+  --sage-soft: #c9e8df;
   --white: #ffffff;
-  --line: rgba(28,42,50,0.08);
-  --line-strong: rgba(28,42,50,0.14);
-  --shadow-sm: 0 2px 12px rgba(28,42,50,0.06);
-  --shadow-md: 0 8px 30px rgba(28,42,50,0.10);
-  --shadow-lg: 0 24px 60px rgba(28,42,50,0.14);
+  --line: rgba(67,81,90,0.12);
+  --line-strong: rgba(67,81,90,0.22);
+  --shadow-sm: 0 2px 12px rgba(67,81,90,0.06);
+  --shadow-md: 0 8px 30px rgba(67,81,90,0.10);
+  --shadow-lg: 0 24px 60px rgba(67,81,90,0.14);
   --radius: 18px;
   --radius-lg: 28px;
   --radius-xl: 40px;
   --ease: cubic-bezier(0.22,1,0.36,1);
   --ease-out: cubic-bezier(0.16,1,0.3,1);
-  --serif: 'Fraunces', 'Cormorant Garamond', serif;
-  --sans: 'DM Sans', sans-serif;
+  --serif: 'Dancing Script', cursive;
+  --sans: 'Questrial', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -167,7 +167,7 @@ p { margin: 0; }
   font-family: var(--serif);
   font-style: italic;
   font-size: 19px;
-  line-height: 1;
+  line-height: 1.05;
 }
 .menu { display: none; border: 0; background: none; color: var(--ocean); cursor: pointer; }
 nav {

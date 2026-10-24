@@ -93,7 +93,7 @@ export default function ParentRegistration() {
           <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', background: 'var(--pale)', marginBottom: 28, boxShadow: 'var(--shadow-md)' }}>
             <CheckCircle2 size={40} strokeWidth={1.5} style={{ color: 'var(--sage)' }} />
           </div>
-          <h1 style={{ fontSize: '48px', color: 'var(--blue-deep)', fontFamily: "'Cormorant Garamond',serif", fontWeight: 500 }}>Thank you!</h1>
+          <h1 style={{ fontSize: '48px', color: 'var(--ocean)', fontFamily: 'var(--serif)', fontWeight: 500 }}>Thank you!</h1>
           <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: 1.7, maxWidth: '500px', margin: '20px auto' }}>
             We've received your parent registration and our team will be in touch shortly to learn more about your family and the care you're looking for.
           </p>
