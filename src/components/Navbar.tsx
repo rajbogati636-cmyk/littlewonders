@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, CalendarHeart, Users } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks: { label: string; href: string }[] = [
-  { label: 'Wedding Childcare', href: '/#services' },
-  { label: 'Care Options', href: '/care-options' },
+  { label: 'Wedding Childcare', href: '/wedding-childcare' },
   { label: 'Private & Corporate Care', href: '/functions' },
-  { label: 'Group Bookings', href: '/#services' },
-  { label: 'Defence Care', href: '/#services' },
+  { label: 'Group Bookings', href: '/group-bookings' },
+  { label: 'Defence Care', href: '/defence-care' },
 ];
 
 const aboutDropdown: { label: string; href: string }[] = [
@@ -48,24 +47,8 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="registration-strip">
-        <div className="registration-strip-inner">
-          <span className="registration-strip-label">Ready to register?</span>
-          <div className="registration-strip-links">
-            <Link to="/event-registration">
-              <CalendarHeart size={14} strokeWidth={1.8} />
-              Event Registration <span aria-hidden="true">→</span>
-            </Link>
-            <Link to="/parent-registration">
-              <Users size={14} strokeWidth={1.8} />
-              Parent Registration <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <div className="announcement">
-        <span>—</span> Premium Wedding &amp; Event Childcare Across Southern Queensland
+        Premium Wedding &amp; Event Childcare Across Southern Queensland
         <div>
           <Link to="/contact">Enquire</Link>
           <i></i>
@@ -100,7 +83,7 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-          <Link to="/#journal" onClick={() => setMenuOpen(false)}>Journal</Link>
+          <Link to="/journal" onClick={() => setMenuOpen(false)}>Journal</Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
         <Link className="button small" to="/contact" onClick={() => setMenuOpen(false)}>Book Your Connection Call</Link>

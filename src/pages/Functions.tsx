@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Download, Sparkles, Users, Briefcase, PartyPopper, Heart, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Download, Palette, Users, Briefcase, PartyPopper, Heart, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 const privateEventTypes = ['Christmas Parties','Annual Celebrations','Anniversaries / Engagements',"Children's Parties",'Birthday Parties (over 18)','and much more!'];
@@ -9,7 +9,7 @@ const careOptions = [
   { icon: Users, title: 'Supervised Care & Entertainment', desc: 'Crafts, games, activities and more — keeping children happily engaged throughout your event.' },
   { icon: Clock, title: 'Extra Hands at Meal Times', desc: 'An extra set of hands to help with feeding, settling and supporting little ones during meals.' },
   { icon: Heart, title: 'Slumber Spaces', desc: 'Comfortable slumber spaces to accommodate your tired little guests while you celebrate.' },
-  { icon: Sparkles, title: 'Added Magic', desc: 'Face painters, character visits, jumping castles and more — fun additions to make the day special.' },
+  { icon: Palette, title: 'Added Magic', desc: 'Face painters, character visits, jumping castles and more — fun additions to make the day special.' },
 ];
 
 const inclusions = [
