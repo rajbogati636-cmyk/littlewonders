@@ -28,13 +28,25 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  const NAV_MOBILE_BREAKPOINT = 1420;
+  const NAV_MOBILE_BREAKPOINT = 900;
 
   const isActive = (href: string) => location.pathname === href || location.pathname === href.replace(/\/$/, '');
 
   useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    const updateScroll = () => setIsScrolled(window.scrollY > 52);
+    updateScroll();
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    return () => window.removeEventListener('scroll', updateScroll);
+  }, []);
+  useEffect(() => {
+    const closeDesktopMenu = () => { if (window.innerWidth > NAV_MOBILE_BREAKPOINT) setMenuOpen(false); };
+    window.addEventListener('resize', closeDesktopMenu);
+    return () => window.removeEventListener('resize', closeDesktopMenu);
+  }, []);
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -42,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Restore the original registration links above the announcement bar. */}
+      {/* Registration strip scrolls away; the primary navigation stays sticky. */}
       <div className="registration-strip">
         <div className="registration-strip-inner">
           <span className="registration-strip-label">Ready to register?</span>
@@ -59,21 +71,14 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="announcement">
-        Premium Wedding &amp; Event Childcare Across Southern Queensland
-        <div>
-          <Link to="/contact">Enquire</Link>
-        </div>
-      </div>
-
-      <header className="site-header">
+      <header className={`site-header${isScrolled ? ' is-scrolled' : ''}`}>
         <Link className="brand" to="/">
           <img className="brand-logo" src="/assets/littlewonders-logo.png" alt="Little Wonders" />
         </Link>
         <button className="menu" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
         </button>
-        <nav className={menuOpen ? 'open' : ''}>
+        <nav aria-label="Main navigation" className={menuOpen ? 'open' : ''}>
           {navLinks.map((link) => (
             <Link key={link.label} to={link.href} onClick={() => setMenuOpen(false)}>{link.label}</Link>
           ))}

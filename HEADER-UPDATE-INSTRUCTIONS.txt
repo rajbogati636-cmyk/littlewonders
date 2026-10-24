@@ -1,0 +1,15 @@
+Little Wonders — Two-section header update
+
+Upload these extracted files to your GitHub pastel-preview branch (not main), keeping their paths:
+  src/components/Navbar.tsx
+  src/index.css
+
+Changes:
+- Removes the middle announcement bar entirely.
+- Keeps the Ready to Register / Event Registration / Parent Registration strip at the top.
+- Shows all primary navigation tabs visibly across desktop widths, without the earlier desktop side menu.
+- On scrolling, the registration strip scrolls away while the primary navigation stays sticky and gently shrinks.
+- Keeps the Book Your Connection Call action in the main navigation.
+- On compact mobile/tablet widths (900px or less), tabs are available in an expandable menu.
+
+No contact or registration form, Resend integration, or Cloudflare API files were edited.

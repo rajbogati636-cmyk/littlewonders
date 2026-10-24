@@ -1543,77 +1543,127 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
 
 
 /* ============================================================
-   OCT 2026 — Header navigation stability correction
-   The registration and announcement bars remain present at the
-   top of the page, but scroll out naturally. Only the navigation
-   sticks; it does not change height or overlap the bars.
+   OCT 2026 — Two-tier header: registration strip + navigation.
+   The registration strip scrolls away. The main navigation stays
+   sticky and shrinks subtly while preserving every desktop tab.
    ============================================================ */
 .registration-strip {
   position: relative;
   top: auto;
   z-index: 55;
 }
-.announcement { z-index: 54; }
-.site-header,
-.site-header.is-scrolled {
+.site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 15px clamp(20px, 3%, 55px);
-  gap: clamp(12px, 1.2vw, 22px);
+  padding: 12px clamp(18px, 2.5vw, 45px);
+  gap: clamp(12px, 1.5vw, 24px);
+  justify-content: space-between;
+  box-shadow: 0 2px 14px rgba(28,42,50,.07);
   animation: none;
   transform: none;
-  box-shadow: 0 2px 14px rgba(28,42,50,.08);
+  transition: padding .25s ease, box-shadow .25s ease;
 }
-.site-header .brand { flex: 0 0 auto; }
+.site-header.is-scrolled {
+  position: sticky;
+  top: 0;
+  padding: 6px clamp(18px, 2.5vw, 45px);
+  box-shadow: 0 4px 22px rgba(28,42,50,.13);
+  animation: none;
+  transform: none;
+}
+.site-header .brand { flex: 0 0 auto; min-width: 0; }
 .site-header .brand-logo {
-  width: clamp(170px, 12.3vw, 200px);
-  height: 74px;
+  width: clamp(142px, 10.8vw, 178px);
+  height: 67px;
+  transition: width .25s ease, height .25s ease;
 }
-.site-header .brand::after { font-size: 17px; }
+.site-header .brand::after {
+  font-size: 15px;
+  transition: font-size .25s ease;
+}
+.site-header.is-scrolled .brand-logo {
+  width: clamp(128px, 9.6vw, 157px);
+  height: 54px;
+}
+.site-header.is-scrolled .brand::after { font-size: 13px; }
 .site-header nav {
+  display: flex;
   flex: 1 1 auto;
   min-width: 0;
-  flex-wrap: nowrap;
-  justify-content: center;
+  position: static;
+  flex-direction: row;
   align-items: center;
-  gap: clamp(7px, .85vw, 14px);
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px clamp(9px, .85vw, 15px);
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  max-height: none;
+  overflow: visible;
 }
 .site-header nav > a,
 .site-header .nav-dropdown > a {
-  font-size: clamp(10px, .76vw, 12px);
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  min-height: 28px;
+  font-size: clamp(10px, .73vw, 11.5px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
   white-space: nowrap;
-  letter-spacing: .02em;
 }
+.site-header .nav-dropdown { display: flex; padding-bottom: 10px; margin-bottom: -10px; }
+.site-header .nav-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  min-width: 240px;
+}
+.site-header .menu { display: none; }
 .site-header > .button.small {
+  display: inline-flex;
   flex: 0 0 auto;
-  min-height: 44px;
-  padding: 12px 16px;
-  font-size: 11px;
+  justify-content: center;
+  min-height: 43px;
+  padding: 12px clamp(12px, 1.25vw, 18px);
+  max-width: 196px;
+  font-size: 10px;
   line-height: 1.25;
-  white-space: nowrap;
+  text-align: center;
+  white-space: normal;
+}
+.site-header.is-scrolled > .button.small {
+  min-height: 40px;
+  padding: 10px 12px;
 }
 .site-header .mobile-booking-link { display: none; }
 
-/* On tablets/narrower desktop windows use the full menu instead
-   of clipping the first links or wrapping navigation awkwardly. */
-@media (max-width: 1420px) {
+/* Tablet and phone widths use an expandable navigation only where
+   eight horizontal tabs cannot physically fit; desktop keeps all tabs. */
+@media (max-width: 900px) {
   .site-header, .site-header.is-scrolled {
-    justify-content: space-between;
-    padding: 12px clamp(20px, 4%, 55px);
-    gap: 16px;
+    padding: 10px 20px;
+    gap: 14px;
   }
-  .site-header .brand-logo { width: 185px; height: 69px; }
-  .site-header .brand::after { font-size: 16px; }
+  .site-header.is-scrolled { padding-top: 6px; padding-bottom: 6px; }
+  .site-header .brand-logo { width: 161px; height: 62px; }
+  .site-header .brand::after { font-size: 14px; }
+  .site-header.is-scrolled .brand-logo { width: 146px; height: 53px; }
+  .site-header.is-scrolled .brand::after { font-size: 12px; }
   .site-header > .button.small { display: none; }
   .site-header .menu {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 46px;
+    flex: 0 0 44px;
+    min-height: 44px;
     margin-left: auto;
-    min-height: 46px;
-    border-radius: 12px;
+    border-radius: 10px;
     background: var(--sky-pale);
   }
   .site-header nav {
@@ -1623,16 +1673,17 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
     left: 0;
     right: 0;
     z-index: 101;
-    padding: 15px clamp(20px, 4%, 55px) 24px;
+    padding: 12px 22px 22px;
     margin: 0;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: stretch;
-    gap: 2px;
+    gap: 1px;
     background: var(--cream);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow-lg);
-    max-height: calc(100dvh - 110px);
+    max-height: calc(100dvh - 84px);
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -1640,7 +1691,7 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
   .site-header nav > a,
   .site-header .nav-dropdown > a {
     display: block;
-    padding: 13px 12px;
+    padding: 11px 12px;
     min-height: 44px;
     font-size: 13px;
     line-height: 1.4;
@@ -1655,10 +1706,10 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
     min-width: 0;
     margin: 0 0 8px 12px;
     padding: 4px 0;
-    box-shadow: none;
     border: 0;
     border-left: 3px solid var(--rose-soft);
     border-radius: 0 10px 10px 0;
+    box-shadow: none;
     background: var(--sky-pale);
   }
   .site-header .dropdown-menu a {
@@ -1667,21 +1718,20 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
     padding: 12px 16px !important;
   }
   .site-header .mobile-booking-link {
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    margin-top: 10px;
     border-radius: 999px;
     background: var(--rose-soft);
     color: var(--ink);
-    margin: 12px 0 0;
-    text-align: center;
     font-weight: 700;
+    text-align: center;
   }
   .site-header .mobile-booking-link::after { display: none; }
 }
-@media (max-width: 760px) {
-  .site-header, .site-header.is-scrolled { padding: 9px 20px; }
-  .site-header .brand-logo { width: 160px; height: 59px; }
-  .site-header .brand::after { font-size: 14px; }
-  .site-header nav { max-height: calc(100dvh - 88px); }
+@media (max-width: 420px) {
+  .site-header .brand-logo { width: 147px; height: 56px; }
+  .site-header .brand::after { font-size: 12px; }
+  .site-header.is-scrolled .brand-logo { width: 136px; height: 48px; }
 }
