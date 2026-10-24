@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, CalendarHeart, Users } from 'lucide-react';
 
 const navLinks: { label: string; href: string }[] = [
   { label: 'Wedding Childcare', href: '/wedding-childcare' },
@@ -47,6 +47,23 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Restore the original registration links above the announcement bar. */}
+      <div className="registration-strip">
+        <div className="registration-strip-inner">
+          <span className="registration-strip-label">Ready to register?</span>
+          <div className="registration-strip-links">
+            <Link to="/event-registration">
+              <CalendarHeart size={14} strokeWidth={1.8} />
+              Event Registration <span aria-hidden="true">→</span>
+            </Link>
+            <Link to="/parent-registration">
+              <Users size={14} strokeWidth={1.8} />
+              Parent Registration <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <div className="announcement">
         Premium Wedding &amp; Event Childcare Across Southern Queensland
         <div>

@@ -1438,3 +1438,105 @@ nav a:not(.dropdown-menu a):hover { color: var(--ink); }
   .venue-directory-cta { padding: 43px 18px; }
 }
 @media(max-width: 390px) { .venue-region-nav { grid-template-columns: 1fr; } }
+
+
+/* ================================================================
+   Restored spacious footer layout — retains brand palette and links.
+   Header registration strip remains above the announcement bar.
+   ================================================================ */
+.footer-top {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: clamp(60px, 6vw, 94px) 6% clamp(54px, 5vw, 78px);
+  display: grid;
+  grid-template-columns: minmax(195px, 1fr) minmax(0, 3.15fr);
+  align-items: start;
+  column-gap: clamp(40px, 5vw, 92px);
+  row-gap: 42px;
+}
+.footer-brand {
+  gap: 22px;
+  align-items: flex-start;
+}
+.footer-brand .brand-logo {
+  width: min(215px, 100%);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px clamp(20px, 2.5vw, 48px);
+  align-items: start;
+}
+.footer-links > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  max-width: none;
+  gap: 12px;
+}
+.footer-links h4 {
+  font: 700 12px/1.5 var(--sans);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ocean);
+  margin: 0 0 12px;
+}
+.footer-links a {
+  font: 500 13px/1.65 var(--sans);
+  color: var(--ink);
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--ocean);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-bottom {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 23px 6% 29px;
+  gap: 12px 27px;
+  align-items: center;
+  line-height: 1.75;
+}
+/* The registration strip retains its existing pastel styling.
+   Make its two actions easy to tap on narrower screens. */
+.registration-strip-links a:focus-visible {
+  outline: 2px solid var(--ocean);
+  outline-offset: 3px;
+}
+@media (max-width: 1180px) {
+  .footer-top {
+    grid-template-columns: minmax(195px, .85fr) minmax(0, 2fr);
+    column-gap: 36px;
+  }
+  .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 34px; }
+}
+@media (max-width: 760px) {
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 52px 7% 48px;
+  }
+  .footer-brand { gap: 16px; }
+  .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 26px; row-gap: 34px; }
+  .footer-links h4 { margin-bottom: 5px; }
+  .footer-bottom { justify-content: flex-start; padding: 23px 7% 30px; }
+  .registration-strip { position: relative; top: auto; }
+}
+@media (max-width: 420px) {
+  .footer-links { column-gap: 20px; }
+  .footer-links a { font-size: 12.5px; }
+  .footer-links > div:last-child { grid-column: 1 / -1; }
+  .registration-strip-links { flex-wrap: wrap; justify-content: center; }
+  .registration-strip-links a { font-size: 10px; }
+}
