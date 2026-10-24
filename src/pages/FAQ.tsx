@@ -51,7 +51,7 @@ export default function FAQ() {
               <div key={i} style={{ border: '1px solid var(--line)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  style={{ width: '100%', textAlign: 'left', padding: '18px 20px', background: openIndex === i ? 'var(--sky-pale)' : '#fff', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, fontFamily: 'var(--serif)', fontSize: 18, color: 'var(--ocean)', fontWeight: 500 }}
+                  style={{ width: '100%', textAlign: 'left', padding: '18px 20px', background: openIndex === i ? 'var(--sky-pale)' : '#fff', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, fontFamily: 'var(--sans)', fontSize: 16, color: 'var(--ocean)', fontWeight: 500 }}
                 >
                   {faq.q}
                   <ChevronDown size={20} strokeWidth={1.5} style={{ flexShrink: 0, transform: openIndex === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s var(--ease)' }} />

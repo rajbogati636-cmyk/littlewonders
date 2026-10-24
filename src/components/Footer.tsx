@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="footer-links">
           {footerSections.map((section) => (
             <div key={section.heading} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <h4 style={{ color: '#fff', fontFamily: 'var(--sans)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, marginBottom: 6 }}>{section.heading}</h4>
+              <h4 style={{ color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, marginBottom: 6 }}>{section.heading}</h4>
               {section.links.map((link) => (
                 <Link key={link.label} to={link.href}>{link.label}</Link>
               ))}
@@ -59,8 +59,8 @@ export default function Footer() {
         <div className="footer-social">
           <h4>Get in touch</h4>
           <p style={{ fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>
-            <a href="tel:0488233252" style={{ color: 'var(--gold-soft)' }}>0488 233 252</a><br />
-            <a href="mailto:hello@littlewonders.com.au" style={{ color: 'var(--gold-soft)' }}>hello@littlewonders.com.au</a>
+            <a href="tel:0488233252" style={{ color: 'var(--ocean)' }}>0488 233 252</a><br />
+            <a href="mailto:hello@littlewonders.com.au" style={{ color: 'var(--ocean)' }}>hello@littlewonders.com.au</a>
           </p>
           <div className="footer-social-links">
             <a href="https://www.instagram.com/little_wonders_babysitting" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

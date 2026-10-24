@@ -4,72 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm cream / ivory base
-        cream: {
-          50: '#fdfbf7',
-          100: '#faf6ee',
-          200: '#f5ecdb',
-          300: '#eeddc0',
-          400: '#e4c89e',
-          500: '#d7ae7a',
-        },
-        // Sage / eucalyptus greens
-        sage: {
-          50: '#f4f7f4',
-          100: '#e8f0e8',
-          200: '#cfe0d0',
-          300: '#a8c8ab',
-          400: '#7daa82',
-          500: '#5c8c62',
-          600: '#47734d',
-          700: '#3a5d40',
-          800: '#304a35',
-          900: '#283d2c',
-        },
-        // Terracotta / clay accent
-        clay: {
-          50: '#fbf3ef',
-          100: '#f5e1d8',
-          200: '#eac4b4',
-          300: '#dd9f87',
-          400: '#cf7e5e',
-          500: '#c26848',
-          600: '#a8543a',
-          700: '#8a4330',
-          800: '#6f3728',
-          900: '#5a2e22',
-        },
-        // Deep charcoal for text
-        ink: {
-          50: '#f5f5f4',
-          100: '#e7e5e4',
-          200: '#d6d3d1',
-          300: '#a8a29e',
-          400: '#78716c',
-          500: '#57534e',
-          600: '#44403c',
-          700: '#292524',
-          800: '#1c1917',
-          900: '#0c0a09',
-        },
-        // Soft gold for accents
-        gold: {
-          50: '#fdf9ed',
-          100: '#faf0d4',
-          200: '#f4dfa8',
-          300: '#edc96d',
-          400: '#e0b04a',
-          500: '#c89636',
-          600: '#a87a2c',
-          700: '#875e25',
-          800: '#6e4c22',
-          900: '#5c4020',
-        },
+        cream: {50:'#fffdfb',100:'#fff7f9',200:'#ffdcE1'},
+        sky: {50:'#f0f7fd',100:'#C8DEF3',300:'#93ACC3',500:'#6A869F'},
+        rose: {50:'#fff7f9',100:'#F8C8D3',200:'#ECC2CD',300:'#E9BAC1',400:'#CC8D9D'},
+        sage: {50:'#D4F0ED',100:'#C4ECE0',300:'#A4C5BB'},
+        peach: {100:'#FFD3CA',300:'#EBAD9F'},
+        lavender: {100:'#F3D7EF',300:'#D3B8CF'},
+        gold: {100:'#FFE6AA',300:'#F1CF7C'},
+        ink: {500:'#526575',700:'#43515a'},
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"Poppins"', 'system-ui', 'sans-serif'],
+        serif: ['"Dancing Script"', 'cursive'],
         script: ['"Dancing Script"', 'cursive'],
+        sans: ['"Questrial"', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(2.5rem, 6vw, 5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
@@ -101,8 +48,8 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-warm': 'linear-gradient(135deg, #fdfbf7 0%, #faf6ee 50%, #f5ecdb 100%)',
-        'gradient-sage': 'linear-gradient(135deg, #f4f7f4 0%, #e8f0e8 100%)',
+        'gradient-warm': 'linear-gradient(135deg, #fffdfb 0%, #ffdcE1 100%)',
+        'gradient-sage': 'linear-gradient(135deg, #D4F0ED 0%, #C4ECE0 100%)',
       },
     },
   },
