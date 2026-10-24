@@ -1,24 +1,181 @@
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Heart, Award, Palette, UsersRound, Gift, ArrowRight, Instagram } from 'lucide-react';
-const features=[
- {icon:ShieldCheck,title:'Safe Hands',text:'Low ratios, qualified educators & elevated safety standards.'},
- {icon:Heart,title:'Warm Hearts',text:'We genuinely get to know every family and every child.'},
- {icon:Award,title:'Professional Care',text:'Experienced, reliable & dedicated to exceptional service.'},
- {icon:Palette,title:'Beautifully Styled',text:'We style our play spaces to match your wedding colours at no extra cost.'},
- {icon:UsersRound,title:'Guest Connect',text:'We connect with your little guests before the big day.'},
- {icon:Gift,title:'Memories to Keep',text:'Every child takes home their own special memories.'},
+import { ShieldCheck, Heart, Award, Palette, UsersRound, Gift, ArrowRight, Phone, CheckCircle2, Briefcase, Instagram } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+
+const weddingFeatures = [
+  'Personalised care tailored to your celebration',
+  'Play spaces styled to match your wedding colours',
+  'We connect with your little guests before the big day',
+  'Low ratios, qualified educators & elevated safety',
 ];
-const services=[
- {title:'Wedding Childcare', desc:'From intimate gatherings to grand celebrations, we create personalised wedding childcare experiences across Southern Queensland so you can relax, celebrate and enjoy every moment.',image:'/assets/service-wedding.jpg',href:'/wedding-childcare',flagship:true},
- {title:'Private & Corporate Care',desc:'Conferences, corporate events, private functions and celebrations. Flexible childcare solutions designed for families, business and special occasions.',image:'/assets/service-corporate.jpg',href:'/functions'},
- {title:'Defence Care & Support',desc:'Proudly supporting Australian Defence families with trusted, flexible childcare solutions — wherever you need us across Queensland.',image:'/assets/babysitting-family.jpg',href:'/defence-care'},
+
+const corporateFeatures = [
+  'Onsite, offsite or in-home care options',
+  'Re-occurring or once-off bookings',
+  'Free event portal for your guests',
+  'Flexible care for any business size',
 ];
-const instagram='https://www.instagram.com/little_wonders_babysitting';
-export default function Home(){return <main id="top">
- <section className="client-hero"><div className="client-hero-copy"><p className="eyebrow">Premium Wedding &amp; Event Childcare<br/>Across Southern Queensland</p><h1>Designs for<br/> Your Wedding.<br/><em>Care curated for your children.</em></h1><p>Thoughtfully tailored childcare experiences for weddings and events across Southern Queensland, so you and your guests can be fully present — knowing the little people are safe, happy and creating memories of their own.</p><div className="actions"><Link className="button" to="/contact">Book Your Connection Call <ArrowRight size={16}/></Link><a className="button outline" href="#services">Explore Our Services</a></div></div><div className="client-hero-photo"><img src="/assets/home-cover.webp" alt="Children enjoying a giant Connect Four game at a beautiful Queensland venue" /></div></section>
- <section className="features client-features">{features.map(f=><div key={f.title}><f.icon size={29} strokeWidth={1.35}/><b>{f.title}</b><p>{f.text}</p></div>)}</section>
- <section className="client-services" id="services"><p className="eyebrow centered">Our Services</p><h2>Exceptional Childcare for Extraordinary Occasions.</h2><p className="service-subtitle">Weddings, events and family moments — with care at the heart.</p><div className="client-service-cards">{services.map(s=><article key={s.title} className={s.flagship?'flagship':''}><Link to={s.href} className="client-service-photo"><img src={s.image} alt={s.title} loading="lazy"/></Link><div className="client-service-card-copy"><h3>{s.title}</h3><p>{s.desc}</p><Link to={s.href}>Learn More <ArrowRight size={17}/></Link></div></article>)}</div></section>
- <section className="venues-band client-venues"><div className="venues-band-content"><p className="eyebrow">We travel to</p><h2>Extraordinary Venues.</h2><p>From the rolling hills of Maleny and the Sunshine Coast Hinterland to Toowoomba, Brisbane, Tamborine Mountain and beyond, we bring exceptional childcare to Queensland's most beautiful wedding and event locations.</p><div className="regions"><Link to="/locations#maleny">Maleny &amp; Hinterland</Link><Link to="/locations#sunshine-coast">Sunshine Coast &amp; Noosa</Link><Link to="/locations#brisbane">Brisbane</Link><Link to="/locations#toowoomba">Toowoomba &amp; Darling Downs</Link><Link to="/locations#tamborine">Tamborine Mountain</Link><Link to="/locations">More Regions</Link></div></div><div className="venues-band-image" role="img" aria-label="Panoramic Maleny hinterland landscape"/></section>
- <section className="instagram-home" id="instagram"><div><p className="eyebrow">Follow along</p><h2>A little more wonder on Instagram.</h2><p>See real Little Wonders moments — weddings, styled care spaces, activities and behind-the-scenes memories.</p><a href={instagram} target="_blank" rel="noopener noreferrer" className="button"><Instagram size={17}/> Visit our Instagram <ArrowRight size={16}/></a></div><div className="instagram-preview"><img src="/assets/Wedding_Website.png" alt="Little Wonders styled wedding childcare"/><img src="/assets/care-wedding-connect-four.webp" alt="Children playing Connect Four"/><img src="/assets/maleny-client.jpg" alt="Maleny hinterland"/></div></section>
- <section className="connect client-connect" id="contact"><p className="eyebrow centered">Let's connect</p><h2>Book Your Complimentary Connection Call</h2><p>A relaxed 15–30 minute chat to talk about your celebration,<br className="desktop"/> answer your questions and see how we can help.</p><Link className="button" to="/contact">Book Now <ArrowRight size={16}/></Link></section>
- </main>}
+
+const defenceFeatures = [
+  'Trusted childcare for Defence families',
+  'Flexible solutions across Queensland',
+  'On-base, off-base & community events',
+  'Security clearance coordination',
+];
+
+export default function Home() {
+  const rootRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    rootRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <main id="top" ref={rootRef}>
+      {/* Full-bleed hero */}
+      <section className="hero-full">
+        <div className="hero-full-image">
+          <div className="hero-stamp">SAFE<br /><b>·</b><br />JOYFUL<br /><b>·</b><br />THOUGHTFUL</div>
+        </div>
+        <div className="hero-full-content">
+          <span className="hero-kicker">For beautiful celebrations &amp; the little people you love</span>
+          <p className="eyebrow">Premium childcare for families, weddings &amp; events<br />across Southern Queensland</p>
+          <h1>Care that makes<br /><em>every moment.</em></h1>
+          <div className="hero-script">More present for what matters most.</div>
+          <p>Thoughtfully tailored childcare experiences for families, weddings and events across Southern Queensland, so you can be fully present — knowing the little people are safe, happy and creating memories of their own.</p>
+          <div className="actions">
+            <Link className="button" to="/contact">
+              Book Your Connection Call <ArrowRight size={16} strokeWidth={1.8} />
+            </Link>
+            <a className="button outline" href="#services">Explore Our Services</a>
+          </div>
+          <div className="hero-note"><span>—</span> Beautifully considered care, wherever life takes you</div>
+        </div>
+      </section>
+
+      {/* Features strip */}
+      <section className="features reveal">
+        <div><ShieldCheck size={30} strokeWidth={1.5} /><b>Safe Hands</b><p>Low ratios, qualified educators &amp; elevated safety standards.</p></div>
+        <div><Heart size={30} strokeWidth={1.5} /><b>Warm Hearts</b><p>We genuinely get to know every family and every child.</p></div>
+        <div><Award size={30} strokeWidth={1.5} /><b>Professional Care</b><p>Experienced, reliable &amp; dedicated to exceptional service.</p></div>
+        <div><Palette size={30} strokeWidth={1.5} /><b>Beautifully Styled</b><p>We style our play spaces to match your wedding colours at no extra cost.</p></div>
+        <div><UsersRound size={30} strokeWidth={1.5} /><b>Guest Connect</b><p>We connect with your little guests before the big day.</p></div>
+        <div><Gift size={30} strokeWidth={1.5} /><b>Memories to Keep</b><p>Every child takes home their own special memories.</p></div>
+      </section>
+
+      {/* Wedding Childcare — alternating row */}
+      <section className="alt-section reveal" id="services">
+        <div className="alt-image">
+          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/wedding-children.jpg')" }} />
+          <div className="alt-image-badge"><Heart size={18} strokeWidth={1.5} /> Wedding Childcare</div>
+        </div>
+        <div className="alt-copy cream">
+          <p className="eyebrow">Our services</p>
+          <h2>Wedding Childcare</h2>
+          <p>From intimate gatherings to grand celebrations, we create personalised wedding childcare experiences across Southern Queensland so you can relax, celebrate and enjoy every moment.</p>
+          <ul className="alt-features">
+            {weddingFeatures.map((f) => (
+              <li key={f}><CheckCircle2 size={17} strokeWidth={1.8} /> {f}</li>
+            ))}
+          </ul>
+          <div className="actions">
+            <Link className="button" to="/wedding-childcare">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate Care — alternating row (flipped) */}
+      <section className="alt-section flip reveal">
+        <div className="alt-image">
+          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/event-children.jpg')" }} />
+          <div className="alt-image-badge"><Briefcase size={18} strokeWidth={1.5} /> Private &amp; Corporate</div>
+        </div>
+        <div className="alt-copy sky">
+          <p className="eyebrow">Our services</p>
+          <h2>Private &amp; Corporate Care</h2>
+          <p>Conferences, corporate events and private functions. Flexible childcare solutions designed for families, businesses and special occasions.</p>
+          <ul className="alt-features">
+            {corporateFeatures.map((f) => (
+              <li key={f}><CheckCircle2 size={17} strokeWidth={1.8} /> {f}</li>
+            ))}
+          </ul>
+          <div className="actions">
+            <Link className="button" to="/functions">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Defence Care — alternating row (dark) */}
+      <section className="alt-section reveal">
+        <div className="alt-image">
+          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/childcare-tent.jpg')" }} />
+          <div className="alt-image-badge"><ShieldCheck size={18} strokeWidth={1.5} /> Defence Care</div>
+        </div>
+        <div className="alt-copy dark">
+          <p className="eyebrow">Our services</p>
+          <h2>Defence Care &amp; Support</h2>
+          <p>Proudly supporting Australian Defence families with trusted, flexible childcare solutions — wherever you need us across Queensland.</p>
+          <ul className="alt-features">
+            {defenceFeatures.map((f) => (
+              <li key={f}><CheckCircle2 size={17} strokeWidth={1.8} /> {f}</li>
+            ))}
+          </ul>
+          <div className="actions">
+            <Link className="button light" to="/defence-care">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Venues — split pane */}
+      <section className="venues-band reveal" id="about">
+        <div className="venues-band-content">
+          <p className="eyebrow">We travel to</p>
+          <h2>Extraordinary Venues.</h2>
+          <p>From the rolling hills of Maleny and the Sunshine Coast Hinterland to Toowoomba, Brisbane, Tamborine Mountain and beyond, we bring exceptional childcare to Queensland's most beautiful wedding and event locations.</p>
+          <div className="regions">
+            <Link to="/locations#maleny">Maleny &amp; Hinterland</Link>
+            <Link to="/locations#sunshine-coast">Sunshine Coast &amp; Noosa</Link>
+            <Link to="/locations#brisbane">Brisbane</Link>
+            <Link to="/locations#toowoomba">Toowoomba &amp; Darling Downs</Link>
+            <Link to="/locations#tamborine">Tamborine Mountain</Link>
+            <Link to="/locations">More Regions</Link>
+          </div>
+        </div>
+        <div className="venues-band-image"></div>
+      </section>
+
+      {/* Bento gallery */}
+      <section className="bento-gallery reveal" id="journal">
+        <div className="bento-tile large" style={{ backgroundImage: "url('/assets/gallery-1.jpg')" }}></div>
+        <div className="bento-tile" style={{ backgroundImage: "url('/assets/gallery-2.jpg')" }}></div>
+        <div className="bento-tile" style={{ backgroundImage: "url('/assets/gallery-3.jpg')" }}></div>
+        <div className="bento-tile wide" style={{ backgroundImage: "url('/assets/gallery-4.jpg')" }}></div>
+        <a className="bento-tile instagram" href="https://www.instagram.com/little_wonders_babysitting" target="_blank" rel="noopener noreferrer">
+          <Instagram size={28} strokeWidth={1.5} />
+          Follow us<br /><strong>on Instagram ↗</strong>
+        </a>
+      </section>
+
+      {/* Connect CTA */}
+      <section className="connect reveal" id="contact">
+        <p className="eyebrow centered">Let's connect</p>
+        <h2>Book Your Complimentary Connection Call</h2>
+        <p>A relaxed 15–30 minute chat to talk about your celebration,<br className="desktop" /> answer your questions and see how we can help.</p>
+        <Link className="button" to="/contact">
+          Book now <ArrowRight size={16} strokeWidth={1.8} />
+        </Link>
+        <p style={{ marginTop: 20, fontSize: 13, color: 'var(--ink-soft)' }}>
+          Or call us directly&nbsp;
+          <a href="tel:0488233252" style={{ color: 'var(--ocean)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+            <Phone size={13} strokeWidth={1.8} /> 0488 233 252
+          </a>
+        </p>
+      </section>
+    </main>
+  );
+}
