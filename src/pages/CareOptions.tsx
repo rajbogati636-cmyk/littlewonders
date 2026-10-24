@@ -4,7 +4,7 @@ const additional = [
  { title:'Private & Corporate Care', image:'/assets/event-children.jpg', text:'Childcare for private functions, corporate events, conferences, professional events and other organised occasions.', href:'/functions' },
  { title:'Group Bookings', image:'/assets/childcare-tent.jpg', text:'For families travelling together who would like coordinated childcare at their accommodation — including destination wedding guests. Not function or event care.', href:'/group-bookings' },
  { title:'Babysitting & Family Care', image:'/assets/care-babysitting.jpg', text:'Occasional private family babysitting and regular care, subject to location and Wonder Team availability.', href:'/contact' },
- { title:'Defence Care & Support', image:'/assets/babysitting-family.jpg', text:'Dedicated, thoughtfully arranged childcare for Australian Defence families and their events.', href:'/defence-care' },
+ { title:'Defence Care & Support', image:'/assets/defence-care-client-photo-2026.png', text:'Dedicated, thoughtfully arranged childcare for Australian Defence families and their events.', href:'/defence-care' },
 ];
 export default function CareOptions(){return <main>
  <header className="page-hero"><p className="eyebrow">Little Wonders</p><h1>Care Options</h1><p>Premium wedding childcare, with carefully selected additional care services.</p></header>

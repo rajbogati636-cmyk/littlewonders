@@ -113,7 +113,7 @@ export default function Home() {
       {/* Defence Care — alternating row (dark) */}
       <section className="alt-section reveal">
         <div className="alt-image">
-          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/childcare-tent.jpg')" }} />
+          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/defence-care-client-photo-2026.png')" }} />
           <div className="alt-image-badge"><ShieldCheck size={18} strokeWidth={1.5} /> Defence Care</div>
         </div>
         <div className="alt-copy dark">
