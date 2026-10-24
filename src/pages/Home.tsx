@@ -54,7 +54,7 @@ export default function Home() {
             </Link>
             <Link className="button outline" to="/#services">Explore Our Services</Link>
           </div>
-          <div className="hero-note"><span>✦</span> Beautifully considered care, wherever life takes you</div>
+          <div className="hero-note"><span>—</span> Beautifully considered care, wherever life takes you</div>
         </div>
       </section>
 
@@ -131,7 +131,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Venues band */}
+      {/* Venues — split pane */}
       <section className="venues-band reveal" id="about">
         <div className="venues-band-content">
           <p className="eyebrow">We travel to</p>
@@ -146,9 +146,7 @@ export default function Home() {
             <a href="#">More Regions</a>
           </div>
         </div>
-        <div className="venues-band-image">
-          <img src="/assets/maleny.jpg" alt="Rolling hills of Maleny and the Sunshine Coast Hinterland" />
-        </div>
+        <div className="venues-band-image"></div>
       </section>
 
       {/* Bento gallery */}

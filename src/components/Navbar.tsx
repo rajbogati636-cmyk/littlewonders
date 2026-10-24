@@ -65,7 +65,7 @@ export default function Navbar() {
       </div>
 
       <div className="announcement">
-        <span>✦</span> Premium Wedding &amp; Event Childcare Across Southern Queensland
+        <span>—</span> Premium Wedding &amp; Event Childcare Across Southern Queensland
         <div>
           <Link to="/contact">Enquire</Link>
           <i></i>
