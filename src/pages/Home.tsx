@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Heart, Award, Sparkles, UsersRound, Gift, ArrowRight, Phone, CheckCircle2, CalendarHeart, Briefcase, MapPin } from 'lucide-react';
+import { ShieldCheck, Heart, Award, Palette, UsersRound, Gift, ArrowRight, Phone, CheckCircle2, Briefcase, Instagram } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 const weddingFeatures = [
@@ -52,7 +52,7 @@ export default function Home() {
             <Link className="button" to="/contact">
               Book Your Connection Call <ArrowRight size={16} strokeWidth={1.8} />
             </Link>
-            <Link className="button outline" to="/#services">Explore Our Services</Link>
+            <a className="button outline" href="#services">Explore Our Services</a>
           </div>
           <div className="hero-note"><span>—</span> Beautifully considered care, wherever life takes you</div>
         </div>
@@ -63,7 +63,7 @@ export default function Home() {
         <div><ShieldCheck size={30} strokeWidth={1.5} /><b>Safe Hands</b><p>Low ratios, qualified educators &amp; elevated safety standards.</p></div>
         <div><Heart size={30} strokeWidth={1.5} /><b>Warm Hearts</b><p>We genuinely get to know every family and every child.</p></div>
         <div><Award size={30} strokeWidth={1.5} /><b>Professional Care</b><p>Experienced, reliable &amp; dedicated to exceptional service.</p></div>
-        <div><Sparkles size={30} strokeWidth={1.5} /><b>Beautifully Styled</b><p>We style our play spaces to match your wedding colours at no extra cost.</p></div>
+        <div><Palette size={30} strokeWidth={1.5} /><b>Beautifully Styled</b><p>We style our play spaces to match your wedding colours at no extra cost.</p></div>
         <div><UsersRound size={30} strokeWidth={1.5} /><b>Guest Connect</b><p>We connect with your little guests before the big day.</p></div>
         <div><Gift size={30} strokeWidth={1.5} /><b>Memories to Keep</b><p>Every child takes home their own special memories.</p></div>
       </section>
@@ -84,7 +84,7 @@ export default function Home() {
             ))}
           </ul>
           <div className="actions">
-            <Link className="button" to="/contact">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
+            <Link className="button" to="/wedding-childcare">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
           </div>
         </div>
       </section>
@@ -98,7 +98,7 @@ export default function Home() {
         <div className="alt-copy sky">
           <p className="eyebrow">Our services</p>
           <h2>Private &amp; Corporate Care</h2>
-          <p>Conferences, corporate events, private functions and group bookings. Flexible childcare solutions designed for families, business and special occasions.</p>
+          <p>Conferences, corporate events and private functions. Flexible childcare solutions designed for families, businesses and special occasions.</p>
           <ul className="alt-features">
             {corporateFeatures.map((f) => (
               <li key={f}><CheckCircle2 size={17} strokeWidth={1.8} /> {f}</li>
@@ -113,7 +113,7 @@ export default function Home() {
       {/* Defence Care — alternating row (dark) */}
       <section className="alt-section reveal">
         <div className="alt-image">
-          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/childcare-tent.jpg')" }} />
+          <div className="alt-image-bg" style={{ backgroundImage: "url('/assets/defence-care-client-photo-2026.png')" }} />
           <div className="alt-image-badge"><ShieldCheck size={18} strokeWidth={1.5} /> Defence Care</div>
         </div>
         <div className="alt-copy dark">
@@ -126,7 +126,7 @@ export default function Home() {
             ))}
           </ul>
           <div className="actions">
-            <Link className="button light" to="/contact">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
+            <Link className="button light" to="/defence-care">Learn more <ArrowRight size={15} strokeWidth={1.8} /></Link>
           </div>
         </div>
       </section>
@@ -138,12 +138,12 @@ export default function Home() {
           <h2>Extraordinary Venues.</h2>
           <p>From the rolling hills of Maleny and the Sunshine Coast Hinterland to Toowoomba, Brisbane, Tamborine Mountain and beyond, we bring exceptional childcare to Queensland's most beautiful wedding and event locations.</p>
           <div className="regions">
-            <a href="#">Maleny &amp; Hinterland</a>
-            <a href="#">Sunshine Coast &amp; Noosa</a>
-            <a href="#">Brisbane</a>
-            <a href="#">Toowoomba &amp; Darling Downs</a>
-            <a href="#">Tamborine Mountain</a>
-            <a href="#">More Regions</a>
+            <Link to="/locations#maleny">Maleny &amp; Hinterland</Link>
+            <Link to="/locations#sunshine-coast">Sunshine Coast &amp; Noosa</Link>
+            <Link to="/locations#brisbane">Brisbane</Link>
+            <Link to="/locations#toowoomba">Toowoomba &amp; Darling Downs</Link>
+            <Link to="/locations#tamborine">Tamborine Mountain</Link>
+            <Link to="/locations">More Regions</Link>
           </div>
         </div>
         <div className="venues-band-image"></div>
@@ -156,7 +156,7 @@ export default function Home() {
         <div className="bento-tile" style={{ backgroundImage: "url('/assets/gallery-3.jpg')" }}></div>
         <div className="bento-tile wide" style={{ backgroundImage: "url('/assets/gallery-4.jpg')" }}></div>
         <a className="bento-tile instagram" href="https://www.instagram.com/little_wonders_babysitting" target="_blank" rel="noopener noreferrer">
-          <Sparkles size={28} strokeWidth={1.5} />
+          <Instagram size={28} strokeWidth={1.5} />
           Follow us<br /><strong>on Instagram ↗</strong>
         </a>
       </section>
@@ -166,9 +166,9 @@ export default function Home() {
         <p className="eyebrow centered">Let's connect</p>
         <h2>Book Your Complimentary Connection Call</h2>
         <p>A relaxed 15–30 minute chat to talk about your celebration,<br className="desktop" /> answer your questions and see how we can help.</p>
-        <a className="button" href="mailto:hello@littlewonders.com.au">
+        <Link className="button" to="/contact">
           Book now <ArrowRight size={16} strokeWidth={1.8} />
-        </a>
+        </Link>
         <p style={{ marginTop: 20, fontSize: 13, color: 'var(--ink-soft)' }}>
           Or call us directly&nbsp;
           <a href="tel:0488233252" style={{ color: 'var(--ocean)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
