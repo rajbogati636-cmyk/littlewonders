@@ -18,6 +18,7 @@ import WeddingChildcare from '@/pages/WeddingChildcare';
 import GroupBookings from '@/pages/GroupBookings';
 import DefenceCare from '@/pages/DefenceCare';
 import Locations from '@/pages/Locations';
+import VenueRegionPage from '@/pages/VenueRegionPage';
 import Journal from '@/pages/Journal';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import PrivacyNotice from '@/pages/PrivacyNotice';
@@ -43,6 +44,7 @@ function App() {
           <Route path="/group-bookings" element={<GroupBookings />} />
           <Route path="/defence-care" element={<DefenceCare />} />
           <Route path="/locations" element={<Locations />} />
+          <Route path="/locations/:regionId" element={<VenueRegionPage />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

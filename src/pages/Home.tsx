@@ -138,11 +138,11 @@ export default function Home() {
           <h2>Extraordinary Venues.</h2>
           <p>From the rolling hills of Maleny and the Sunshine Coast Hinterland to Toowoomba, Brisbane, Tamborine Mountain and beyond, we bring exceptional childcare to Queensland's most beautiful wedding and event locations.</p>
           <div className="regions">
-            <Link to="/locations#maleny">Maleny &amp; Hinterland</Link>
-            <Link to="/locations#sunshine-coast">Sunshine Coast &amp; Noosa</Link>
-            <Link to="/locations#brisbane">Brisbane</Link>
-            <Link to="/locations#toowoomba">Toowoomba &amp; Darling Downs</Link>
-            <Link to="/locations#tamborine">Tamborine Mountain</Link>
+            <Link to="/locations/maleny">Maleny &amp; Hinterland</Link>
+            <Link to="/locations/sunshine-coast">Sunshine Coast &amp; Noosa</Link>
+            <Link to="/locations/brisbane">Brisbane</Link>
+            <Link to="/locations/toowoomba">Toowoomba &amp; Darling Downs</Link>
+            <Link to="/locations/tamborine">Tamborine Mountain</Link>
             <Link to="/locations">More Regions</Link>
           </div>
         </div>
