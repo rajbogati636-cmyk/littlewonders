@@ -7,6 +7,7 @@ const navLinks: { label: string; href: string }[] = [
   { label: 'Private & Corporate Care', href: '/functions' },
   { label: 'Group Bookings', href: '/group-bookings' },
   { label: 'Defence Care', href: '/defence-care' },
+  { label: 'Venues', href: '/locations' },
 ];
 
 const aboutDropdown: { label: string; href: string }[] = [
@@ -80,7 +81,7 @@ export default function Navbar() {
         </button>
         <nav aria-label="Main navigation" className={menuOpen ? 'open' : ''}>
           {navLinks.map((link) => (
-            <Link key={link.label} to={link.href} onClick={() => setMenuOpen(false)}>{link.label}</Link>
+            <Link key={link.label} to={link.href} aria-current={link.href === '/locations' && location.pathname.startsWith('/locations') ? 'page' : isActive(link.href) ? 'page' : undefined} onClick={() => setMenuOpen(false)}>{link.label}</Link>
           ))}
           <div className={`nav-dropdown ${aboutOpen ? 'open' : ''}`} onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
             <Link to="/about" aria-haspopup="true" onClick={(e) => { if (window.innerWidth <= NAV_MOBILE_BREAKPOINT) { e.preventDefault(); setAboutOpen(!aboutOpen); } }}>About Us</Link>
