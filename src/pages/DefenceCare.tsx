@@ -3,10 +3,10 @@ import { ArrowRight, Home, Users, Building2, CalendarDays } from 'lucide-react';
 import './defence-care-original.css';
 
 /**
- * Defence Care content restored from the business's original site as a temporary
- * legacy page. Keep the established registration and contact forms unchanged.
- * The available project only includes the recently supplied Defence photo;
- * replace it with the original site's image assets once provided/verified.
+ * The visible opening follows the client's screenshot of the original Defence Care page.
+ * Only this page and its scoped stylesheet are updated. Shared navigation, registration
+ * forms, Resend integration and backend remain unchanged.
+ * The original page's lower image placements still require visual verification.
  */
 const careOptions = [
   { label: 'Care at Home', anchor: 'care-at-home', icon: Home },
@@ -17,20 +17,16 @@ const careOptions = [
 
 export default function DefenceCare() {
   return <main className="defence-original-page">
-    <header className="defence-original-top">
-      <div className="defence-original-intro">
-        <p className="eyebrow">Little Wonders</p>
-        <h1>Defence Care</h1>
-        <h2>Reliable childcare for Australian Defence families</h2>
-        <p>Little Wonders supports families through the changing demands of Defence life, including relocations and the need for care that fits around family and community commitments.</p>
-        <p>Explore the four kinds of Defence care below and speak with our team about a tailored arrangement.</p>
-      </div>
-      <img
-        className="defence-original-photo"
-        src="/assets/defence-care-client-photo-2026.png"
-        alt="Australian Defence servicewoman with a young child"
-      />
+    <header className="defence-legacy-title-band">
+      <h1>Defence Care</h1>
     </header>
+
+    <section className="defence-original-opening" aria-label="About Little Wonders Defence Care">
+      <h2>Little Wonders is committed to providing reliable care for Australia's most dedicated families.</h2>
+      <p>As we expand throughout Australia our mission is to ensure defence families experience as little interruption to their in-home care requirements as possible.</p>
+      <p>By providing consistent care options throughout the country we hope to ease the stress often accumulated with frequent relocations by working closely with families to allow smooth transitions between changes.</p>
+      <p>Our care for Defence families can be separated into four main categories:</p>
+    </section>
 
     <nav className="defence-original-types" aria-label="Defence care options">
       {careOptions.map(({ label, anchor, icon: Icon }) =>
@@ -40,6 +36,10 @@ export default function DefenceCare() {
         </a>
       )}
     </nav>
+
+    <figure className="defence-original-photo-block">
+      <img src="/assets/defence-care-client-photo-2026.png" alt="Australian Defence servicewoman with a young child" />
+    </figure>
 
     <div className="defence-original-content">
       <section id="care-at-home" className="defence-original-section">
@@ -51,19 +51,16 @@ export default function DefenceCare() {
           <p>The original website listed an ADF discount of $2–$8 per hour on eligible care and wedding packages. <strong>Please enquire about current rates and eligibility.</strong></p>
         </div>
       </section>
-
       <section id="community-care" className="defence-original-section">
         <p className="eyebrow">Defence community</p>
         <h2>Community Care</h2>
         <p>Childcare at Defence community houses and centres can support crèche sessions, open days, holiday celebrations and community activities. The earlier page describes a typical ratio of 1:4, adjusted to children's ages and needs.</p>
       </section>
-
       <section id="barracks-care" className="defence-original-section">
         <p className="eyebrow">Bases and units</p>
         <h2>Barracks Care</h2>
         <p>Support for Defence bases and unit gatherings can be planned for one-off or recurring events. Care can accommodate larger groups, including over 30 children. The original page specifies at least two carers, with staffing planned around the event and children’s ages.</p>
       </section>
-
       <section id="public-events" className="defence-original-section">
         <p className="eyebrow">Open days and exhibitions</p>
         <h2>Public Events &amp; Exhibitions</h2>
