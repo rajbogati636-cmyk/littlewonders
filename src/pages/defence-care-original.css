@@ -1,0 +1,38 @@
+/* Scoped Defence Care styling: never changes shared header or forms. */
+.defence-original-page { background: #fffdfb; color: var(--ink); }
+.defence-original-top { width: min(1200px, 92%); margin: 0 auto; display:grid; grid-template-columns: 1.12fr .88fr; gap:clamp(28px,4vw,65px); align-items:center; padding:clamp(45px,6vw,92px) 0 45px; }
+.defence-original-intro { display:flex; flex-direction:column; align-items:flex-start; gap:19px; }
+.defence-original-intro h1 { font-size:clamp(58px,7vw,94px); line-height:1.06; }
+.defence-original-intro h2 { font-family:var(--sans); font-size:clamp(20px,2.1vw,27px); font-weight:500; line-height:1.35; color:var(--ocean); }
+.defence-original-intro p:not(.eyebrow) { line-height:1.78; max-width:680px; font-size:16px; }
+.defence-original-photo { width:100%; min-height:350px; max-height:540px; aspect-ratio:4/4.2; object-fit:cover; border-radius:16px; }
+.defence-original-types { width:min(1200px,92%); margin:24px auto 70px; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+.defence-original-types a { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:13px; min-height:140px; border:1px solid #d5e0e8; border-radius:14px; color:#4a6f87; background:#eff7fb; text-align:center; font-size:15px; padding:18px 12px; transition:background .2s ease, transform .2s ease; }
+.defence-original-types a:hover, .defence-original-types a:focus-visible { background:#d8e9f0; transform:translateY(-2px); }
+.defence-original-content { width:min(1000px,88%); margin:0 auto 80px; }
+.defence-original-section { padding:50px 0; border-bottom:1px solid #dce5ea; scroll-margin-top:110px; }
+.defence-original-section:first-child { border-top:1px solid #dce5ea; }
+.defence-original-section h2 { font-size:clamp(40px,4.5vw,57px); margin:14px 0 20px; line-height:1.15; }
+.defence-original-section > p:not(.eyebrow) { max-width:850px; line-height:1.85; font-size:16px; }
+.defence-original-inset { margin-top:30px; border-left:4px solid #93acc3; padding:22px 28px; background:#eef6fb; border-radius:0 14px 14px 0; }
+.defence-original-inset h3 { font-family:var(--sans); font-size:19px; font-weight:600; letter-spacing:.02em; margin-bottom:12px; color:#4d718a; }
+.defence-original-inset p { font-size:15px; line-height:1.75; }
+.defence-original-register { text-align:center; padding:70px 6% 76px; background:#e4f2f3; }
+.defence-original-register h2, .defence-original-contact h2 { font-size:clamp(44px,4.8vw,65px); margin:10px 0 26px; line-height:1.1; }
+.defence-original-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:16px; }
+.defence-original-actions a, .defence-original-contact a { display:inline-flex; gap:9px; align-items:center; justify-content:center; min-height:47px; }
+.defence-original-actions .button-outline { background:#fffdfb; color:#4b7089; border:1px solid #a9c2d4; }
+.defence-original-contact { padding:83px 6% 90px; text-align:center; background:#fffdfb; }
+@media (max-width:860px) {
+ .defence-original-top { grid-template-columns:1fr; }
+ .defence-original-photo { min-height:250px; max-height:420px; aspect-ratio:16/10; }
+ .defence-original-types { grid-template-columns:repeat(2, minmax(0,1fr)); margin-bottom:44px; }
+ .defence-original-content { width:90%; }
+}
+@media (max-width:510px) {
+ .defence-original-types { gap:9px; }
+ .defence-original-types a { min-height:112px; padding:12px 6px; font-size:13px; }
+ .defence-original-types svg { width:25px; height:25px; }
+ .defence-original-section { padding:38px 0; }
+ .defence-original-inset { padding:18px; }
+}
